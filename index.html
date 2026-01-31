@@ -6,34 +6,32 @@
     <title>Definitive RP | GTA V PS4</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* --- CORE STYLE & ENHANCED AESTHETICS --- */
+        /* --- CORE STYLE & PERSISTENT BACKGROUND --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #0b0b0d; color: white; font-family: 'Montserrat', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
-
-        /* SFONDO CON EFFETTO PARALLASSE E OVERLAY DINAMICO */
-        .hero { 
-            height: 100vh; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            text-align: center; 
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(11,11,13,1)), url('sfondo.webp'); 
+        
+        /* Sfondo applicato a tutto il sito come richiesto */
+        body { 
+            background: linear-gradient(rgba(11, 11, 13, 0.85), rgba(11, 11, 13, 0.95)), url('sfondo.webp'); 
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; 
-            padding: 20px;
-            position: relative;
+            background-attachment: fixed;
+            color: white; 
+            font-family: 'Montserrat', sans-serif; 
+            overflow-x: hidden; 
+            scroll-behavior: smooth; 
         }
+
+        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; position: relative; background: transparent; }
 
         /* Overlay Lingua */
         .overlay { position: fixed; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 2000; display: flex; align-items: center; justify-content: center; transition: 0.5s; backdrop-filter: blur(15px); }
-        .overlay-content { text-align: center; background: rgba(255,255,255,0.03); padding: 60px; border-radius: 0px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 0 50px rgba(88, 101, 242, 0.2); }
-        .lang-buttons button { margin: 10px; padding: 15px 40px; cursor: pointer; border: 1px solid white; border-radius: 0px; background: transparent; color: white; font-weight: 900; transition: 0.3s; text-transform: uppercase; letter-spacing: 2px; }
+        .overlay-content { text-align: center; background: rgba(255,255,255,0.03); padding: 60px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 0 50px rgba(88, 101, 242, 0.2); }
+        .lang-buttons button { margin: 10px; padding: 15px 40px; cursor: pointer; border: 1px solid white; background: transparent; color: white; font-weight: 900; transition: 0.3s; text-transform: uppercase; letter-spacing: 2px; }
         .lang-buttons button:hover { background: white; color: black; box-shadow: 0 0 30px white; }
 
-        /* MODALE REGOLAMENTO */
+        /* MODALE REGOLAMENTO INTEGRALE */
         .modal { display: none; position: fixed; z-index: 3000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(15px); }
-        .modal-content { background: #080808; margin: 3% auto; padding: 50px; border: 1px solid #5865F2; width: 85%; max-width: 900px; border-radius: 5px; max-height: 85vh; overflow-y: auto; position: relative; box-shadow: 0 0 60px rgba(88, 101, 242, 0.15); }
+        .modal-content { background: #080808; margin: 2% auto; padding: 50px; border: 1px solid #5865F2; width: 85%; max-width: 900px; border-radius: 5px; max-height: 85vh; overflow-y: auto; position: relative; box-shadow: 0 0 60px rgba(88, 101, 242, 0.15); }
         .close-modal { position: absolute; right: 25px; top: 15px; font-size: 45px; cursor: pointer; color: #5865F2; transition: 0.3s; }
         .close-modal:hover { color: white; transform: rotate(90deg); }
         .modal-content h2 { color: #5865F2; margin-bottom: 30px; font-weight: 900; font-size: 2.5rem; letter-spacing: 3px; border-bottom: 2px solid #222; padding-bottom: 15px; }
@@ -42,8 +40,6 @@
         /* Navbar & Loghi */
         .navbar { position: fixed; top: 0; width: 100%; padding: 30px 60px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,1), transparent); }
         .nav-logo-circle { width: 75px; height: 75px; border-radius: 50%; border: 2px solid #5865F2; object-fit: cover; box-shadow: 0 0 20px rgba(88, 101, 242, 0.4); background: #000; padding: 3px; }
-        
-        /* Menu Toggle */
         .menu-toggle { cursor: pointer; display: flex; flex-direction: column; gap: 8px; padding: 10px; }
         .bar { width: 40px; height: 3px; background: white; transition: 0.4s; }
 
@@ -59,45 +55,38 @@
         
         /* Pulsanti Hero */
         .hero-btns { display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; }
-        .btn-entra { padding: 20px 50px; border-radius: 0px; border: none; font-weight: 900; cursor: pointer; background: #5865F2; color: white; text-decoration: none; transition: 0.4s; text-transform: uppercase; box-shadow: 0 10px 30px rgba(88, 101, 242, 0.4); letter-spacing: 2px; }
-        .btn-entra:hover { transform: scale(1.05); box-shadow: 0 15px 40px rgba(88, 101, 242, 0.6); background: white; color: black; }
-        .btn-regolamento { padding: 20px 50px; border-radius: 0px; border: 2px solid white; font-weight: 900; cursor: pointer; background: transparent; color: white; text-decoration: none; transition: 0.4s; text-transform: uppercase; letter-spacing: 2px; }
-        .btn-regolamento:hover { background: white; color: black; transform: scale(1.05); }
+        .btn-entra { padding: 20px 50px; font-weight: 900; cursor: pointer; background: #5865F2; color: white; text-decoration: none; transition: 0.4s; text-transform: uppercase; box-shadow: 0 10px 30px rgba(88, 101, 242, 0.4); letter-spacing: 2px; }
+        .btn-regolamento { padding: 20px 50px; border: 2px solid white; font-weight: 900; cursor: pointer; background: transparent; color: white; text-decoration: none; transition: 0.4s; text-transform: uppercase; letter-spacing: 2px; }
+        .btn-regolamento:hover, .btn-entra:hover { background: white; color: black; transform: scale(1.05); }
 
         /* Info & Paths */
-        .info-sec { padding: 150px 20px; text-align: center; background: #0b0b0d; position: relative; }
-        .glass { max-width: 1100px; margin: auto; background: rgba(255, 255, 255, 0.01); backdrop-filter: blur(25px); padding: 80px; border-radius: 0px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 30px 100px rgba(0,0,0,0.5); position: relative; }
-        .glass::after { content: ''; position: absolute; top: -2px; left: -2px; width: 50px; height: 50px; border-top: 3px solid #5865F2; border-left: 3px solid #5865F2; }
+        .info-sec { padding: 150px 20px; text-align: center; background: transparent; position: relative; }
+        .glass { max-width: 1100px; margin: auto; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(25px); padding: 80px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 30px 100px rgba(0,0,0,0.5); position: relative; }
         
-        .btn-path { padding: 22px 45px; border-radius: 0px; cursor: pointer; font-weight: 900; background: rgba(255,255,255,0.02); transition: 0.3s; margin: 15px; text-transform: uppercase; letter-spacing: 2px; }
+        .btn-path { padding: 22px 45px; cursor: pointer; font-weight: 900; background: rgba(255,255,255,0.02); transition: 0.3s; margin: 15px; text-transform: uppercase; letter-spacing: 2px; }
         .illegal { border: 1px solid #ff4d4d; color: #ff4d4d; }
         .legal { border: 1px solid #4dff88; color: #4dff88; }
         .illegal:hover { background: #ff4d4d; color: white; box-shadow: 0 0 30px rgba(255, 77, 77, 0.5); }
         .legal:hover { background: #4dff88; color: white; box-shadow: 0 0 30px rgba(77, 255, 136, 0.5); }
 
-        /* Sezione Sviluppatori & Sistema */
         .dev-tag { margin-top: 70px; padding-top: 50px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: center; gap: 80px; flex-wrap: wrap; }
         .dev-item h4 { font-size: 0.9rem; letter-spacing: 4px; margin-bottom: 10px; opacity: 0.4; text-transform: uppercase; }
         .dev-item p { font-weight: 900; font-size: 1.5rem; letter-spacing: 2px; color: #fff; }
 
         /* Shop Section */
-        .shop-sec { padding: 120px 20px; text-align: center; background: #070707; }
+        .shop-sec { padding: 120px 20px; text-align: center; background: transparent; }
         .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1200px; margin: 60px auto; }
-        .shop-card { background: #0c0c0e; padding: 60px 40px; border-radius: 0px; border: 1px solid #1a1a1a; transition: 0.5s; position: relative; }
+        .shop-card { background: rgba(12, 12, 14, 0.8); padding: 60px 40px; border: 1px solid #1a1a1a; transition: 0.5s; position: relative; }
         .shop-card:hover { transform: translateY(-20px); border-color: #5865F2; box-shadow: 0 20px 50px rgba(88, 101, 242, 0.2); }
-        .shop-card h3 { font-size: 1.6rem; letter-spacing: 3px; margin-bottom: 15px; }
         .price { font-size: 3.5rem; font-weight: 900; color: #5865F2; margin: 25px 0; display: block; text-shadow: 0 0 20px rgba(88, 101, 242, 0.3); }
 
         /* FAQ */
         .faq-sec { padding: 120px 20px; max-width: 1000px; margin: auto; }
-        details { background: rgba(255,255,255,0.01); padding: 30px; border-radius: 0px; margin-bottom: 20px; cursor: pointer; text-align: left; border: 1px solid #111; transition: 0.3s; }
-        details:hover { border-color: #333; background: rgba(255,255,255,0.03); }
-        summary { font-weight: 900; list-style: none; display: flex; justify-content: space-between; align-items: center; font-size: 1.2rem; letter-spacing: 1px; }
+        details { background: rgba(0, 0, 0, 0.6); padding: 30px; margin-bottom: 20px; cursor: pointer; text-align: left; border: 1px solid #111; transition: 0.3s; }
+        summary { font-weight: 900; list-style: none; display: flex; justify-content: space-between; align-items: center; font-size: 1.2rem; }
         summary::after { content: '→'; color: #5865F2; font-size: 1.5rem; transition: 0.3s; }
-        details[open] summary::after { transform: rotate(90deg); }
-        details p { margin-top: 20px; color: #888; line-height: 1.8; font-size: 1.1rem; border-top: 1px solid #222; padding-top: 15px; }
         
-        footer { padding: 100px 40px; text-align: center; color: #222; font-size: 1rem; background: #000; border-top: 1px solid #111; letter-spacing: 8px; font-weight: 900; text-transform: uppercase; }
+        footer { padding: 100px 40px; text-align: center; color: #555; background: rgba(0,0,0,0.9); border-top: 1px solid #111; letter-spacing: 8px; font-weight: 900; text-transform: uppercase; }
 
         @keyframes pop { 0% { transform: translateY(20px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
         .animate-pop { animation: pop 1s cubic-bezier(0.17, 0.67, 0.83, 0.67); }
@@ -106,15 +95,17 @@
 <body>
 
     <div id="reg-modal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content" id="modal-text">
             <span class="close-modal" onclick="closeReg()">&times;</span>
-            <h2>REGOLAMENTO DEFINITIVE RP</h2>
-            <p><strong>1. Rispetto Comunitario:</strong> È vietato ogni tipo di insulto OOC. Il rispetto verso lo staff e gli altri player è alla base della nostra efficienza.</p>
-            <p><strong>2. Fair Play:</strong> Ogni azione deve permettere una via d'uscita o un'interazione equa per tutte le parti coinvolte.</p>
-            <p><strong>3. Powergaming & Metagaming:</strong> È severamente vietato compiere azioni impossibili nella realtà o utilizzare informazioni ottenute fuori dal gioco.</p>
-            <p><strong>4. Gestione Veicoli:</strong> La guida deve essere realistica. I danni gravi al veicolo devono essere interpretati tramite RP.</p>
-            <p><strong>5. Zone Sicure:</strong> Ospedali e stazioni di Polizia sono considerate zone protette dove non è possibile compiere atti criminali diretti.</p>
-            <p><strong>6. Warning:</strong> Il mancato rispetto del regolamento o delle tempistiche di rifornimento (riserva 30min) comporterà l'assegnazione di un Warn.</p>
+            <h2 id="reg-title">REGOLAMENTO DEFINITIVE RP</h2>
+            <div id="reg-body">
+                <p><strong>1. Rispetto Comunitario:</strong> È vietato ogni tipo di insulto OOC. Il rispetto verso lo staff e gli altri player è alla base della nostra efficienza.</p>
+                <p><strong>2. Fair Play:</strong> Ogni azione deve permettere una via d'uscita o un'interazione equa per tutte le parti coinvolte.</p>
+                <p><strong>3. Powergaming & Metagaming:</strong> È severamente vietato compiere azioni impossibili nella realtà o utilizzare informazioni ottenute fuori dal gioco.</p>
+                <p><strong>4. Gestione Veicoli:</strong> La guida deve essere realistica. La benzina dura almeno 2 ore. Se dopo 30 minuti in riserva il veicolo non viene spento o rifornito, verrà assegnato un Warn.</p>
+                <p><strong>5. Zone Sicure:</strong> Ospedali e stazioni di Polizia sono zone protette.</p>
+                <p><strong>6. Pin Depositi:</strong> Ogni deposito ha un PIN unico che deve essere impostato per garantire la sicurezza dei tuoi beni.</p>
+            </div>
         </div>
     </div>
 
@@ -124,12 +115,13 @@
             <div class="lang-buttons">
                 <button onclick="setLanguage('it')">ITALIANO</button>
                 <button onclick="setLanguage('en')">ENGLISH</button>
+                <button onclick="setLanguage('es')">ESPAÑOL</button>
             </div>
         </div>
     </div>
 
     <nav class="navbar">
-        <img src="logo.JPG" class="nav-logo-circle" alt="Definitive RP Logo">
+        <img src="logo.JPG" class="nav-logo-circle" alt="Logo">
         <div class="menu-toggle" onclick="toggleMenu()">
             <div class="bar"></div><div class="bar" style="margin: 6px 0;"></div><div class="bar"></div>
         </div>
@@ -137,16 +129,15 @@
 
     <div id="side-menu" class="side-nav">
         <a href="javascript:void(0)" onclick="toggleMenu()" style="font-size: 50px; color: #5865F2;">&times;</a>
-        <a href="#info-section" onclick="toggleMenu()">Percorsi</a>
-        <a href="#shop-section" onclick="toggleMenu()">Shop</a>
-        <a href="javascript:void(0)" onclick="openReg(); toggleMenu();">Regolamento</a>
-        <a href="#faq-section" onclick="toggleMenu()">FAQ</a>
-        <a href="https://discord.gg/85Dj5UurDH" target="_blank">Discord</a>
+        <a href="#info-section" class="nav-link-1" onclick="toggleMenu()">Percorsi</a>
+        <a href="#shop-section" class="nav-link-2" onclick="toggleMenu()">Shop</a>
+        <a href="javascript:void(0)" class="nav-link-3" onclick="openReg(); toggleMenu();">Regolamento</a>
+        <a href="#faq-section" class="nav-link-4" onclick="toggleMenu()">FAQ</a>
     </div>
 
     <section class="hero">
         <div class="hero-container">
-            <img src="LOGO.GIF" class="main-logo-gif animate-pop" alt="Definitive RP Animated Logo">
+            <img src="LOGO.GIF" class="main-logo-gif animate-pop" alt="Animated Logo">
             <h1 class="animate-pop">DEFINITIVE</h1>
             <p id="hero-sub" class="sub-text">DESIGN • EFFICIENCY • ROLEPLAY</p>
             <div class="hero-btns">
@@ -160,98 +151,126 @@
         <div class="glass">
             <h2 id="info-title" style="font-size: 3.5rem; font-weight: 900; margin-bottom: 15px; letter-spacing: 5px;">IL TUO DESTINO</h2>
             <p id="info-desc" style="margin-bottom: 60px; color: #5865F2; letter-spacing: 8px; font-weight: 900;">SCEGLI DA CHE PARTE STARE</p>
-            
             <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
-                <button class="btn-path illegal" onclick="showPath('illegal')">CRIMINALITÀ</button>
-                <button class="btn-path legal" onclick="showPath('legal')">ISTITUZIONI</button>
+                <button class="btn-path illegal" id="btn-crim" onclick="showPath('illegal')">CRIMINALITÀ</button>
+                <button class="btn-path legal" id="btn-ist" onclick="showPath('legal')">ISTITUZIONI</button>
             </div>
-            <div id="path-content" style="margin-top:60px; min-height: 150px; color: #fff; line-height: 1.8; font-size: 1.3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
-                <p style="opacity: 0.5;">Clicca su una strada per ricevere indicazioni.</p>
-            </div>
-
-            <div class="dev-tag">
-                <div class="dev-item">
-                    <h4>Dev Team</h4>
-                    <p>.vyxe_ & wxrd</p>
-                </div>
-                <div class="dev-item">
-                    <h4>System Bot</h4>
-                    <p>lwx.bot</p>
-                </div>
+            <div id="path-content" style="margin-top:60px; min-height: 150px; font-size: 1.3rem;">
+                <p id="path-placeholder" style="opacity: 0.5;">Analizza le strade disponibili.</p>
             </div>
         </div>
     </section>
 
     <section id="shop-section" class="shop-sec">
-        <h2 id="shop-title" style="font-size: 3.5rem; font-weight: 900; letter-spacing: 10px; margin-bottom: 20px;">EXCELLENCE SHOP</h2>
+        <h2 id="shop-title" style="font-size: 3.5rem; font-weight: 900; letter-spacing: 10px;">SHOP</h2>
         <div class="shop-grid">
-            <div class="shop-card">
-                <h3>STARTER KIT</h3>
-                <span class="price">5€</span>
-                <p style="color:#555; letter-spacing: 1px;">Base economica solida per muovere i primi passi nella città.</p>
-            </div>
-            <div class="shop-card">
-                <h3>ELITE PACK</h3>
-                <span class="price">10€</span>
-                <p style="color:#555; letter-spacing: 1px;">Accesso a veicoli importati e capitale d'investimento maggiorato.</p>
-            </div>
-            <div class="shop-card">
-                <h3>ORG LEGACY</h3>
-                <span class="price">20€</span>
-                <p style="color:#555; letter-spacing: 1px;">Fondazione della tua organizzazione con base operativa esclusiva.</p>
-            </div>
+            <div class="shop-card"><h3>STARTER KIT</h3><span class="price">5€</span></div>
+            <div class="shop-card"><h3>ELITE PACK</h3><span class="price">10€</span></div>
+            <div class="shop-card"><h3>ORG LEGACY</h3><span class="price">20€</span></div>
         </div>
     </section>
 
     <section id="faq-section" class="faq-sec">
-        <h2 id="faq-title" style="text-align: center; margin-bottom: 70px; font-weight: 900; letter-spacing: 5px; font-size: 3rem;">CONOSCENZA</h2>
+        <h2 id="faq-title" style="text-align: center; margin-bottom: 70px; font-weight: 900; font-size: 3rem;">CONOSCENZA</h2>
         <div id="faq-grid"></div>
     </section>
 
-    <footer>DEFINITIVE ROLEPLAY &copy; 2026</footer>
+    <footer id="footer-text">DEFINITIVE ROLEPLAY &copy; 2026</footer>
 
     <script>
-        const deshawnQuotes = [
-            "Fatti vedere al porto, ho della merce che aspetta solo uno con le palle come te.",
-            "I federali dormono, è il momento perfetto per muovere i carichi. Vieni a cercarmi.",
-            "Vuoi fare i soldi veri o vuoi continuare a pulire i vetri? Ti aspetto al porto.",
-            "Ascolta bene... Deshawn non si fida di nessuno, ma per te posso fare un'eccezione.",
-            "Vieni al molo 4. Porta la radio e non farti seguire da nessuno."
-        ];
-
-        const texts = {
+        const translations = {
             it: {
+                heroSub: "DESIGN • EFFICIENZA • ROLEPLAY",
+                btnEnter: "ENTRA ORA",
+                btnReg: "REGOLAMENTO",
+                infoTitle: "IL TUO DESTINO",
+                infoDesc: "SCEGLI DA CHE PARTE STARE",
+                btnCrim: "CRIMINALITÀ",
+                btnIst: "ISTITUZIONI",
+                pathPlaceholder: "Analizza le strade disponibili.",
+                faqTitle: "CONOSCENZA",
+                nav: ["Percorsi", "Shop", "Regolamento", "FAQ"],
                 faqs: [
-                    ["DOTAZIONE INIZIALE", "Al tuo arrivo riceverai una bicicletta e una radio Nokia. È tutto ciò che ti serve per iniziare a costruire il tuo impero."],
-                    ["AUTONOMIA VEICOLI", "La benzina è progettata per durare almeno 2 ore di guida continua. Se ignori la riserva per più di 30 minuti senza rifornire, riceverai un avviso di possibile warn per scarso realismo."],
-                    ["STABILITÀ DATI", "Ogni tua azione è registrata in un database JSON persistente. I tuoi progressi sono al sicuro anche dopo i riavvii del sistema."],
-                    ["COMUNICAZIONE", "Il microfono è obbligatorio. Senza voce, non c'è ruolo. La radio Nokia è il tuo strumento principale."],
-                    ["DISPONIBILITÀ", "Siamo operativi 24 ore su 24, 7 giorni su 7, con manutenzioni notturne rapide."],
-                    ["CARRIERA RP", "Puoi scalare i ranghi della Polizia o diventare il re del porto. La scelta è dinamica e dipende solo dalle tue interazioni."],
-                    ["REGOLE D'INGAGGIO", "Ogni conflitto deve essere motivato da una valida ragione Roleplay. Il Deathmatch gratuito non è tollerato."],
-                    ["ASSISTENZA", "Il nostro staff è disponibile tramite ticket Discord per risolvere ogni problematica tecnica o di gioco."]
+                    ["DOTAZIONE", "Bicicletta e radio Nokia al tuo arrivo."],
+                    ["BENZINA", "Autonomia 2h. Warn dopo 30min di riserva ignorata."],
+                    ["DATABASE", "Salvataggio persistente in JSON."],
+                    ["DEPOSITI", "Ogni deposito richiede un PIN di sicurezza."]
+                ]
+            },
+            en: {
+                heroSub: "DESIGN • EFFICIENCY • ROLEPLAY",
+                btnEnter: "JOIN NOW",
+                btnReg: "RULES",
+                infoTitle: "YOUR DESTINY",
+                infoDesc: "CHOOSE YOUR SIDE",
+                btnCrim: "CRIMINALITY",
+                btnIst: "INSTITUTIONS",
+                pathPlaceholder: "Analyze the available paths.",
+                faqTitle: "KNOWLEDGE",
+                nav: ["Paths", "Shop", "Rules", "FAQ"],
+                faqs: [
+                    ["EQUIPMENT", "Bicycle and Nokia radio upon arrival."],
+                    ["FUEL", "2h autonomy. Warn after 30min of ignored reserve."],
+                    ["DATABASE", "Persistent JSON storage."],
+                    ["STORAGE", "Each deposit requires a security PIN."]
+                ]
+            },
+            es: {
+                heroSub: "DISEÑO • EFICIENCIA • ROLEPLAY",
+                btnEnter: "ENTRAR AHORA",
+                btnReg: "REGLAMENTO",
+                infoTitle: "TU DESTINO",
+                infoDesc: "ELIGE TU LADO",
+                btnCrim: "CRIMINALIDAD",
+                btnIst: "INSTITUCIONES",
+                pathPlaceholder: "Analiza los caminos disponibles.",
+                faqTitle: "CONOCIMIENTO",
+                nav: ["Caminos", "Tienda", "Reglas", "FAQ"],
+                faqs: [
+                    ["EQUIPO", "Bicicleta y radio Nokia al llegar."],
+                    ["GASOLINA", "Autonomía 2h. Warn tras 30min de reserva ignorada."],
+                    ["BASE DE DATOS", "Guardado persistente en JSON."],
+                    ["DEPÓSITOS", "Cada depósito requiere un PIN de seguridad."]
                 ]
             }
         };
 
         function setLanguage(lang) {
-            const l = texts['it'];
+            const t = translations[lang];
+            document.getElementById('hero-sub').innerText = t.heroSub;
+            document.getElementById('btn-enter').innerText = t.btnEnter;
+            document.getElementById('btn-reg').innerText = t.btnReg;
+            document.getElementById('info-title').innerText = t.infoTitle;
+            document.getElementById('info-desc').innerText = t.infoDesc;
+            document.getElementById('btn-crim').innerText = t.btnCrim;
+            document.getElementById('btn-ist').innerText = t.btnIst;
+            document.getElementById('path-placeholder').innerText = t.pathPlaceholder;
+            document.getElementById('faq-title').innerText = t.faqTitle;
+            
+            // Nav Links
+            document.querySelector('.nav-link-1').innerText = t.nav[0];
+            document.querySelector('.nav-link-2').innerText = t.nav[1];
+            document.querySelector('.nav-link-3').innerText = t.nav[2];
+            document.querySelector('.nav-link-4').innerText = t.nav[3];
+
+            // FAQ Grid
             const grid = document.getElementById('faq-grid');
             grid.innerHTML = '';
-            l.faqs.forEach(f => { grid.innerHTML += `<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`; });
+            t.faqs.forEach(f => {
+                grid.innerHTML += `<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`;
+            });
+
             document.getElementById('language-overlay').style.display = 'none';
         }
 
         function showPath(path) {
             const content = document.getElementById('path-content');
             if(path === 'illegal') {
-                const randomQuote = deshawnQuotes[Math.floor(Math.random() * deshawnQuotes.length)];
-                content.innerHTML = `<h3>LA STRADA DEL CRIMINE</h3><p style="margin-top:15px; font-style: italic; color: #ff4d4d;">"${randomQuote}"</p><p style="margin-top:10px; font-size: 0.9rem; color: #555;">Cerca Deshawn nell'area portuale per iniziare.</p>`;
+                content.innerHTML = `<h3>PORT AREA</h3><p style="color: #ff4d4d; font-style: italic;">"Cerca Deshawn al molo 4 per iniziare."</p>`;
             } else {
-                content.innerHTML = "<h3>LE ISTITUZIONI</h3><p>Scegli di servire la città. Entra nei ranghi della <strong>Polizia</strong>, salva vite in <strong>Ospedale</strong> o mantieni i motori accesi come <strong>Meccanico</strong>.</p>";
+                content.innerHTML = `<h3>CITY HALL</h3><p>Unisciti a Polizia (ID: 1458608660728119387), Ospedale o Meccanici.</p>`;
             }
-            content.style.animation = "none";
-            setTimeout(() => { content.style.animation = "pop 0.6s ease forwards"; }, 10);
+            content.style.animation = "pop 0.5s ease";
         }
 
         function toggleMenu() {
@@ -261,11 +280,6 @@
 
         function openReg() { document.getElementById('reg-modal').style.display = 'block'; }
         function closeReg() { document.getElementById('reg-modal').style.display = 'none'; }
-        
-        window.onclick = function(event) {
-            let modal = document.getElementById('reg-modal');
-            if (event.target == modal) closeReg();
-        }
     </script>
 </body>
 </html>
