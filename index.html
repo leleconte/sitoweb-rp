@@ -16,7 +16,7 @@
             --neon-shadow: 0 0 15px rgba(88, 101, 242, 0.6);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; } /* Cursor personalizzato */
+        * { margin: 0; padding: 0; box-sizing: border-box; } 
         
         body { 
             background: var(--bg-dark);
@@ -31,16 +31,6 @@
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(45deg, rgba(5,5,5,0.95) 30%, rgba(88, 101, 242, 0.1));
             z-index: -1;
-        }
-
-        /* --- CUSTOM CURSOR --- */
-        #cursor {
-            position: fixed; width: 10px; height: 10px; background: white; border-radius: 50%;
-            pointer-events: none; z-index: 10000; mix-blend-mode: difference; transition: transform 0.1s;
-        }
-        #cursor-follower {
-            position: fixed; width: 30px; height: 30px; border: 2px solid var(--primary); border-radius: 50%;
-            pointer-events: none; z-index: 10000; transition: transform 0.15s cubic-bezier(0.17, 0.67, 0.83, 0.67);
         }
 
         /* --- OVERLAY LINGUA (BLUR ESTREMO) --- */
@@ -58,7 +48,6 @@
         .navbar { position: fixed; top: 0; width: 100%; padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: 0.5s; }
         .navbar.scrolled { padding: 20px 60px; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.1); }
         
-        /* FIX LOGO: Aspetto forzato 1:1 per evitare l'effetto ovale */
         .nav-logo { width: 60px; height: 60px; object-fit: cover; border-radius: 50%; border: 2px solid var(--primary); box-shadow: var(--neon-shadow); flex-shrink: 0; }
 
         /* MENU LATERALE */
@@ -120,7 +109,7 @@
         /* --- FAQ --- */
         details { background: rgba(255,255,255,0.02); margin-bottom: 15px; padding: 30px; border-radius: 15px; transition: 0.3s; }
         details[open] { background: rgba(88,101,242,0.1); border: 1px solid var(--primary); }
-        summary { font-weight: 900; font-size: 1.2rem; letter-spacing: 3px; list-style: none; display: flex; justify-content: space-between; }
+        summary { font-weight: 900; font-size: 1.2rem; letter-spacing: 3px; list-style: none; display: flex; justify-content: space-between; cursor: pointer; }
 
         footer { padding: 100px; text-align: center; opacity: 0.3; letter-spacing: 10px; text-transform: uppercase; font-weight: 900; }
 
@@ -134,8 +123,6 @@
 </head>
 <body>
 
-    <div id="cursor"></div>
-    <div id="cursor-follower"></div>
     <div id="bg-video-overlay"></div>
 
     <div id="side-menu" class="side-menu">
@@ -236,18 +223,6 @@
     <footer>Definitive Roleplay &copy; 2026 • Realized with Excellence</footer>
 
     <script>
-        // Cursor Logic
-        const cursor = document.getElementById('cursor');
-        const follower = document.getElementById('cursor-follower');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            setTimeout(() => {
-                follower.style.left = e.clientX - 10 + 'px';
-                follower.style.top = e.clientY - 10 + 'px';
-            }, 50);
-        });
-
         const translations = {
             it: {
                 heroSub: "Design • Efficienza • Roleplay",
