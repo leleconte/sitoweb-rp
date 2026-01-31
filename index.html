@@ -6,7 +6,7 @@
     <title>Definitive RP | GTA V PS4</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* --- CORE STYLE --- */
+        /* --- CORE STYLE & ENHANCED AESTHETICS --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: #0b0b0d; color: white; font-family: 'Montserrat', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
@@ -17,86 +17,89 @@
             align-items: center; 
             justify-content: center; 
             text-align: center; 
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(11,11,13,1)), url('sfondo.webp'); 
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(11,11,13,1)), url('sfondo.webp'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed; 
-            padding: 20px; 
+            padding: 20px;
+            position: relative;
         }
 
         /* Overlay Lingua */
-        .overlay { position: fixed; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 2000; display: flex; align-items: center; justify-content: center; transition: 0.5s; }
-        .overlay-content { text-align: center; background: rgba(255,255,255,0.05); padding: 50px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(20px); box-shadow: 0 0 50px rgba(0,0,0,0.5); }
-        .lang-buttons button { margin: 10px; padding: 15px 30px; cursor: pointer; border: 1px solid white; border-radius: 5px; background: transparent; color: white; font-weight: bold; transition: 0.3s; text-transform: uppercase; }
-        .lang-buttons button:hover { background: white; color: black; box-shadow: 0 0 20px white; }
+        .overlay { position: fixed; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 2000; display: flex; align-items: center; justify-content: center; transition: 0.5s; backdrop-filter: blur(15px); }
+        .overlay-content { text-align: center; background: rgba(255,255,255,0.03); padding: 60px; border-radius: 0px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 0 50px rgba(88, 101, 242, 0.2); }
+        .lang-buttons button { margin: 10px; padding: 15px 40px; cursor: pointer; border: 1px solid white; border-radius: 0px; background: transparent; color: white; font-weight: 900; transition: 0.3s; text-transform: uppercase; letter-spacing: 2px; }
+        .lang-buttons button:hover { background: white; color: black; box-shadow: 0 0 30px white; }
 
         /* MODALE REGOLAMENTO */
-        .modal { display: none; position: fixed; z-index: 3000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); }
-        .modal-content { background: #111; margin: 5% auto; padding: 40px; border: 1px solid #333; width: 80%; max-width: 800px; border-radius: 20px; max-height: 80vh; overflow-y: auto; position: relative; }
-        .close-modal { position: absolute; right: 20px; top: 10px; font-size: 40px; cursor: pointer; color: #555; }
-        .modal-content h2 { color: #5865F2; margin-bottom: 20px; font-weight: 900; }
-        .modal-content p { margin-bottom: 15px; line-height: 1.6; color: #ccc; border-left: 3px solid #5865F2; padding-left: 15px; }
+        .modal { display: none; position: fixed; z-index: 3000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(15px); }
+        .modal-content { background: #080808; margin: 3% auto; padding: 50px; border: 1px solid #5865F2; width: 85%; max-width: 900px; border-radius: 5px; max-height: 85vh; overflow-y: auto; position: relative; box-shadow: 0 0 60px rgba(88, 101, 242, 0.15); }
+        .close-modal { position: absolute; right: 25px; top: 15px; font-size: 45px; cursor: pointer; color: #5865F2; transition: 0.3s; }
+        .close-modal:hover { color: white; transform: rotate(90deg); }
+        .modal-content h2 { color: #5865F2; margin-bottom: 30px; font-weight: 900; font-size: 2.5rem; letter-spacing: 3px; border-bottom: 2px solid #222; padding-bottom: 15px; }
+        .modal-content p { margin-bottom: 20px; line-height: 1.8; color: #ddd; border-left: 4px solid #5865F2; padding-left: 20px; font-size: 1.1rem; }
 
         /* Navbar & Loghi */
-        .navbar { position: fixed; top: 0; width: 100%; padding: 25px 50px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); }
-        .nav-logo-circle { width: 65px; height: 65px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.5); object-fit: cover; box-shadow: 0 0 15px rgba(255,255,255,0.1); }
+        .navbar { position: fixed; top: 0; width: 100%; padding: 30px 60px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,1), transparent); }
+        .nav-logo-circle { width: 75px; height: 75px; border-radius: 50%; border: 2px solid #5865F2; object-fit: cover; box-shadow: 0 0 20px rgba(88, 101, 242, 0.4); background: #000; padding: 3px; }
         
         /* Menu Toggle */
-        .menu-toggle { cursor: pointer; display: flex; flex-direction: column; gap: 6px; padding: 10px; }
-        .bar { width: 35px; height: 3px; background: white; transition: 0.4s; border-radius: 2px; }
+        .menu-toggle { cursor: pointer; display: flex; flex-direction: column; gap: 8px; padding: 10px; }
+        .bar { width: 40px; height: 3px; background: white; transition: 0.4s; }
 
         /* Side Nav */
-        .side-nav { height: 100%; width: 0; position: fixed; z-index: 1500; top: 0; right: 0; background-color: #000; overflow-x: hidden; transition: 0.5s; padding-top: 100px; text-align: center; border-left: 1px solid #222; }
-        .side-nav a { padding: 15px; text-decoration: none; font-size: 22px; color: #fff; display: block; transition: 0.3s; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
-        .side-nav a:hover { color: #5865F2; background: rgba(255,255,255,0.05); }
+        .side-nav { height: 100%; width: 0; position: fixed; z-index: 1500; top: 0; right: 0; background-color: #050505; overflow-x: hidden; transition: 0.5s cubic-bezier(0.7, 0, 0.3, 1); padding-top: 120px; text-align: center; border-left: 2px solid #5865F2; }
+        .side-nav a { padding: 20px; text-decoration: none; font-size: 28px; color: #fff; display: block; transition: 0.3s; font-weight: 900; text-transform: uppercase; letter-spacing: 5px; }
+        .side-nav a:hover { color: #5865F2; background: rgba(88, 101, 242, 0.05); text-shadow: 0 0 15px #5865F2; }
 
         /* Hero Content */
-        .main-logo-gif { width: 320px; margin-bottom: 25px; filter: drop-shadow(0 0 20px rgba(88, 101, 242, 0.4)); }
-        h1 { font-size: 4rem; font-weight: 900; letter-spacing: 8px; margin-bottom: 15px; text-shadow: 0 0 30px rgba(255,255,255,0.2); }
-        .sub-text { font-size: 1.1rem; color: #888; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 3px; }
+        .main-logo-gif { width: 350px; margin-bottom: 30px; filter: drop-shadow(0 0 30px rgba(88, 101, 242, 0.6)); }
+        h1 { font-size: 5rem; font-weight: 900; letter-spacing: 15px; margin-bottom: 15px; text-shadow: 0 0 40px rgba(255,255,255,0.3); line-height: 1; }
+        .sub-text { font-size: 1.2rem; color: #777; margin-bottom: 50px; text-transform: uppercase; letter-spacing: 6px; font-weight: 400; }
         
         /* Pulsanti Hero */
-        .hero-btns { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-        .btn-entra { padding: 18px 45px; border-radius: 50px; border: none; font-weight: bold; cursor: pointer; background: #5865F2; color: white; text-decoration: none; transition: 0.4s; text-transform: uppercase; box-shadow: 0 10px 20px rgba(88, 101, 242, 0.3); }
-        .btn-entra:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(88, 101, 242, 0.5); background: #7289da; }
-        .btn-regolamento { padding: 18px 45px; border-radius: 50px; border: 2px solid white; font-weight: bold; cursor: pointer; background: transparent; color: white; text-decoration: none; transition: 0.4s; text-transform: uppercase; }
-        .btn-regolamento:hover { background: white; color: black; transform: translateY(-5px); }
+        .hero-btns { display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; }
+        .btn-entra { padding: 20px 50px; border-radius: 0px; border: none; font-weight: 900; cursor: pointer; background: #5865F2; color: white; text-decoration: none; transition: 0.4s; text-transform: uppercase; box-shadow: 0 10px 30px rgba(88, 101, 242, 0.4); letter-spacing: 2px; }
+        .btn-entra:hover { transform: scale(1.05); box-shadow: 0 15px 40px rgba(88, 101, 242, 0.6); background: white; color: black; }
+        .btn-regolamento { padding: 20px 50px; border-radius: 0px; border: 2px solid white; font-weight: 900; cursor: pointer; background: transparent; color: white; text-decoration: none; transition: 0.4s; text-transform: uppercase; letter-spacing: 2px; }
+        .btn-regolamento:hover { background: white; color: black; transform: scale(1.05); }
 
         /* Info & Paths */
-        .info-sec { padding: 120px 20px; text-align: center; background: #0b0b0d; }
-        .glass { max-width: 1000px; margin: auto; background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); padding: 60px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-        .btn-path { padding: 18px 35px; border-radius: 15px; cursor: pointer; font-weight: bold; background: rgba(255,255,255,0.03); transition: 0.3s; margin: 10px; text-transform: uppercase; letter-spacing: 1px; }
-        .illegal { border: 1px solid rgba(255, 77, 77, 0.3); color: #ff4d4d; }
-        .legal { border: 1px solid rgba(77, 255, 136, 0.3); color: #4dff88; }
-        .illegal:hover { background: #ff4d4d; color: white; box-shadow: 0 0 20px rgba(255, 77, 77, 0.4); border-color: #ff4d4d; }
-        .legal:hover { background: #4dff88; color: white; box-shadow: 0 0 20px rgba(77, 255, 136, 0.4); border-color: #4dff88; }
+        .info-sec { padding: 150px 20px; text-align: center; background: #0b0b0d; position: relative; }
+        .glass { max-width: 1100px; margin: auto; background: rgba(255, 255, 255, 0.01); backdrop-filter: blur(25px); padding: 80px; border-radius: 0px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 30px 100px rgba(0,0,0,0.5); position: relative; }
+        .glass::after { content: ''; position: absolute; top: -2px; left: -2px; width: 50px; height: 50px; border-top: 3px solid #5865F2; border-left: 3px solid #5865F2; }
+        
+        .btn-path { padding: 22px 45px; border-radius: 0px; cursor: pointer; font-weight: 900; background: rgba(255,255,255,0.02); transition: 0.3s; margin: 15px; text-transform: uppercase; letter-spacing: 2px; }
+        .illegal { border: 1px solid #ff4d4d; color: #ff4d4d; }
+        .legal { border: 1px solid #4dff88; color: #4dff88; }
+        .illegal:hover { background: #ff4d4d; color: white; box-shadow: 0 0 30px rgba(255, 77, 77, 0.5); }
+        .legal:hover { background: #4dff88; color: white; box-shadow: 0 0 30px rgba(77, 255, 136, 0.5); }
 
         /* Sezione Sviluppatori & Sistema */
-        .dev-tag { margin-top: 50px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; }
-        .dev-item h4 { font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 8px; opacity: 0.6; }
-        .dev-item p { font-weight: 900; font-size: 1.3rem; letter-spacing: 1px; }
+        .dev-tag { margin-top: 70px; padding-top: 50px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: center; gap: 80px; flex-wrap: wrap; }
+        .dev-item h4 { font-size: 0.9rem; letter-spacing: 4px; margin-bottom: 10px; opacity: 0.4; text-transform: uppercase; }
+        .dev-item p { font-weight: 900; font-size: 1.5rem; letter-spacing: 2px; color: #fff; }
 
         /* Shop Section */
-        .shop-sec { padding: 100px 20px; text-align: center; background: #050505; }
-        .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1100px; margin: 50px auto; }
-        .shop-card { background: linear-gradient(145deg, #111, #080808); padding: 45px; border-radius: 30px; border: 1px solid #222; transition: 0.5s; position: relative; overflow: hidden; }
-        .shop-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: #5865F2; opacity: 0; transition: 0.5s; }
-        .shop-card:hover { transform: translateY(-15px); border-color: #5865F2; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-        .shop-card:hover::before { opacity: 1; }
-        .price { font-size: 2.5rem; font-weight: 900; color: #5865F2; margin: 20px 0; display: block; }
+        .shop-sec { padding: 120px 20px; text-align: center; background: #070707; }
+        .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1200px; margin: 60px auto; }
+        .shop-card { background: #0c0c0e; padding: 60px 40px; border-radius: 0px; border: 1px solid #1a1a1a; transition: 0.5s; position: relative; }
+        .shop-card:hover { transform: translateY(-20px); border-color: #5865F2; box-shadow: 0 20px 50px rgba(88, 101, 242, 0.2); }
+        .shop-card h3 { font-size: 1.6rem; letter-spacing: 3px; margin-bottom: 15px; }
+        .price { font-size: 3.5rem; font-weight: 900; color: #5865F2; margin: 25px 0; display: block; text-shadow: 0 0 20px rgba(88, 101, 242, 0.3); }
 
         /* FAQ */
-        .faq-sec { padding: 100px 20px; max-width: 900px; margin: auto; }
-        details { background: rgba(255,255,255,0.02); padding: 25px; border-radius: 15px; margin-bottom: 15px; cursor: pointer; text-align: left; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
-        details:hover { background: rgba(255,255,255,0.05); }
-        summary { font-weight: bold; list-style: none; display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem; }
-        summary::after { content: '+'; color: #5865F2; font-size: 1.5rem; }
-        details[open] summary::after { content: '-'; }
-        details p { margin-top: 15px; color: #aaa; line-height: 1.6; }
+        .faq-sec { padding: 120px 20px; max-width: 1000px; margin: auto; }
+        details { background: rgba(255,255,255,0.01); padding: 30px; border-radius: 0px; margin-bottom: 20px; cursor: pointer; text-align: left; border: 1px solid #111; transition: 0.3s; }
+        details:hover { border-color: #333; background: rgba(255,255,255,0.03); }
+        summary { font-weight: 900; list-style: none; display: flex; justify-content: space-between; align-items: center; font-size: 1.2rem; letter-spacing: 1px; }
+        summary::after { content: '→'; color: #5865F2; font-size: 1.5rem; transition: 0.3s; }
+        details[open] summary::after { transform: rotate(90deg); }
+        details p { margin-top: 20px; color: #888; line-height: 1.8; font-size: 1.1rem; border-top: 1px solid #222; padding-top: 15px; }
         
-        footer { padding: 60px; text-align: center; color: #333; font-size: 0.9rem; background: #000; border-top: 1px solid #111; letter-spacing: 2px; }
+        footer { padding: 100px 40px; text-align: center; color: #222; font-size: 1rem; background: #000; border-top: 1px solid #111; letter-spacing: 8px; font-weight: 900; text-transform: uppercase; }
 
-        @keyframes pop { 0% { transform: scale(0.9); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        @keyframes pop { 0% { transform: translateY(20px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
         .animate-pop { animation: pop 1s cubic-bezier(0.17, 0.67, 0.83, 0.67); }
     </style>
 </head>
@@ -117,11 +120,10 @@
 
     <div id="language-overlay" class="overlay">
         <div class="overlay-content">
-            <h2 style="letter-spacing: 5px; margin-bottom: 30px;">SELECT LANGUAGE</h2>
+            <h2 style="letter-spacing: 10px; margin-bottom: 40px; font-weight: 900; font-size: 2.5rem;">DEFINITIVE</h2>
             <div class="lang-buttons">
-                <button onclick="setLanguage('it')">ITALIANO 🇮🇹</button>
-                <button onclick="setLanguage('en')">ENGLISH 🇬🇧</button>
-                <button onclick="setLanguage('es')">ESPAÑOL 🇪🇸</button>
+                <button onclick="setLanguage('it')">ITALIANO</button>
+                <button onclick="setLanguage('en')">ENGLISH</button>
             </div>
         </div>
     </div>
@@ -129,12 +131,12 @@
     <nav class="navbar">
         <img src="logo.JPG" class="nav-logo-circle" alt="Definitive RP Logo">
         <div class="menu-toggle" onclick="toggleMenu()">
-            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar" style="margin: 6px 0;"></div><div class="bar"></div>
         </div>
     </nav>
 
     <div id="side-menu" class="side-nav">
-        <a href="javascript:void(0)" onclick="toggleMenu()" style="font-size: 40px; text-align: right; padding-right: 30px; color: #555;">&times;</a>
+        <a href="javascript:void(0)" onclick="toggleMenu()" style="font-size: 50px; color: #5865F2;">&times;</a>
         <a href="#info-section" onclick="toggleMenu()">Percorsi</a>
         <a href="#shop-section" onclick="toggleMenu()">Shop</a>
         <a href="javascript:void(0)" onclick="openReg(); toggleMenu();">Regolamento</a>
@@ -145,10 +147,10 @@
     <section class="hero">
         <div class="hero-container">
             <img src="LOGO.GIF" class="main-logo-gif animate-pop" alt="Definitive RP Animated Logo">
-            <h1 class="animate-pop">DEFINITIVE ROLEPLAY</h1>
-            <p id="hero-sub" class="sub-text">L'unica realtà dove il tuo domani dipende solo da te. GTA V PS4.</p>
+            <h1 class="animate-pop">DEFINITIVE</h1>
+            <p id="hero-sub" class="sub-text">DESIGN • EFFICIENCY • ROLEPLAY</p>
             <div class="hero-btns">
-                <a href="https://discord.gg/85Dj5UurDH" id="btn-enter" target="_blank" class="btn-entra">ENTRA DA NOI</a>
+                <a href="https://discord.gg/85Dj5UurDH" id="btn-enter" target="_blank" class="btn-entra">ENTRA ORA</a>
                 <a href="javascript:void(0)" onclick="openReg()" id="btn-reg" class="btn-regolamento">REGOLAMENTO</a>
             </div>
         </div>
@@ -156,24 +158,24 @@
 
     <section id="info-section" class="info-sec">
         <div class="glass">
-            <h2 id="info-title" style="font-size: 2.5rem; font-weight: 900; margin-bottom: 10px;">SCEGLI LA TUA STRADA</h2>
-            <p id="info-desc" style="margin-bottom: 40px; color: #666; letter-spacing: 2px;">IL DESTINO DI LOS SANTOS È NELLE TUE MANI.</p>
+            <h2 id="info-title" style="font-size: 3.5rem; font-weight: 900; margin-bottom: 15px; letter-spacing: 5px;">IL TUO DESTINO</h2>
+            <p id="info-desc" style="margin-bottom: 60px; color: #5865F2; letter-spacing: 8px; font-weight: 900;">SCEGLI DA CHE PARTE STARE</p>
             
             <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
-                <button class="btn-path illegal" onclick="showPath('illegal')">ILLEGALITÀ</button>
-                <button class="btn-path legal" onclick="showPath('legal')">LEGALITÀ</button>
+                <button class="btn-path illegal" onclick="showPath('illegal')">CRIMINALITÀ</button>
+                <button class="btn-path legal" onclick="showPath('legal')">ISTITUZIONI</button>
             </div>
-            <div id="path-content" style="margin-top:40px; min-height: 120px; color: #bbb; line-height: 1.8; font-size: 1.1rem;">
-                <p>Seleziona un percorso per visualizzare i dettagli del tuo futuro.</p>
+            <div id="path-content" style="margin-top:60px; min-height: 150px; color: #fff; line-height: 1.8; font-size: 1.3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <p style="opacity: 0.5;">Clicca su una strada per ricevere indicazioni.</p>
             </div>
 
             <div class="dev-tag">
                 <div class="dev-item">
-                    <h4 style="color:#f1c40f">DEVELOPERS</h4>
+                    <h4>Dev Team</h4>
                     <p>.vyxe_ & wxrd</p>
                 </div>
                 <div class="dev-item">
-                    <h4 style="color:#5865F2">SYSTEM BOT</h4>
+                    <h4>System Bot</h4>
                     <p>lwx.bot</p>
                 </div>
             </div>
@@ -181,63 +183,59 @@
     </section>
 
     <section id="shop-section" class="shop-sec">
-        <h2 id="shop-title" style="font-size: 2.5rem; font-weight: 900; letter-spacing: 5px;">SERVER SHOP</h2>
+        <h2 id="shop-title" style="font-size: 3.5rem; font-weight: 900; letter-spacing: 10px; margin-bottom: 20px;">EXCELLENCE SHOP</h2>
         <div class="shop-grid">
             <div class="shop-card">
-                <h3>STARTER PACK</h3>
+                <h3>STARTER KIT</h3>
                 <span class="price">5€</span>
-                <p style="color:#777">Boost economico iniziale per iniziare la tua scalata sociale con stile.</p>
+                <p style="color:#555; letter-spacing: 1px;">Base economica solida per muovere i primi passi nella città.</p>
             </div>
             <div class="shop-card">
-                <h3>MEDIUM PACK</h3>
+                <h3>ELITE PACK</h3>
                 <span class="price">10€</span>
-                <p style="color:#777">Veicolo custom esclusivo e una somma di Cash per dominare le strade.</p>
+                <p style="color:#555; letter-spacing: 1px;">Accesso a veicoli importati e capitale d'investimento maggiorato.</p>
             </div>
             <div class="shop-card">
-                <h3>FACTION PACK</h3>
+                <h3>ORG LEGACY</h3>
                 <span class="price">20€</span>
-                <p style="color:#777">Creazione fazione dedicata con slot riservati e gestione quartier generale.</p>
+                <p style="color:#555; letter-spacing: 1px;">Fondazione della tua organizzazione con base operativa esclusiva.</p>
             </div>
         </div>
     </section>
 
     <section id="faq-section" class="faq-sec">
-        <h2 id="faq-title" style="text-align: center; margin-bottom: 50px; font-weight: 900; letter-spacing: 3px;">FAQ - DOMANDE FREQUENTI</h2>
+        <h2 id="faq-title" style="text-align: center; margin-bottom: 70px; font-weight: 900; letter-spacing: 5px; font-size: 3rem;">CONOSCENZA</h2>
         <div id="faq-grid"></div>
     </section>
 
-    <footer>&copy; 2026 DEFINITIVE ROLEPLAY | EFFICIENCY & DESIGN.</footer>
+    <footer>DEFINITIVE ROLEPLAY &copy; 2026</footer>
 
     <script>
+        const deshawnQuotes = [
+            "Fatti vedere al porto, ho della merce che aspetta solo uno con le palle come te.",
+            "I federali dormono, è il momento perfetto per muovere i carichi. Vieni a cercarmi.",
+            "Vuoi fare i soldi veri o vuoi continuare a pulire i vetri? Ti aspetto al porto.",
+            "Ascolta bene... Deshawn non si fida di nessuno, ma per te posso fare un'eccezione.",
+            "Vieni al molo 4. Porta la radio e non farti seguire da nessuno."
+        ];
+
         const texts = {
             it: {
-                heroSub: "L'unica realtà dove il tuo domani dipende solo da te. GTA V PS4.",
-                btnEnt: "ENTRA DA NOI",
-                btnReg: "REGOLAMENTO",
-                infoTitle: "SCEGLI LA TUA STRADA",
-                infoDesc: "IL DESTINO DI LOS SANTOS È NELLE TUE MANI.",
-                shopTitle: "SERVER SHOP",
-                faqTitle: "FAQ - DOMANDE FREQUENTI",
                 faqs: [
-                    ["Cosa ricevo all'ingresso?", "Ogni nuovo cittadino riceve una bicicletta e una radio Nokia per comunicare subito."],
-                    ["Come funziona la benzina?", "Un pieno dura almeno 2 ore. Se dopo 30 minuti in modalità riserva il veicolo non viene spento o rifornito, riceverai un avviso di possibile warn."],
-                    ["I progressi vengono salvati?", "Sì, il sistema utilizza un database dedicato che rende ogni sessione persistente anche dopo i riavvii."],
-                    ["È obbligatorio il microfono?", "Sì, per un'esperienza Roleplay di qualità il microfono è fondamentale per interagire."],
-                    ["Quali sono gli orari del server?", "Il server è attivo 24/7, con riavvii programmati per mantenere l'efficienza massima."],
-                    ["Posso cambiare lavoro?", "Certamente, potrai scegliere di cambiare fazione o passare all'illegalità seguendo le dinamiche RP."]
+                    ["DOTAZIONE INIZIALE", "Al tuo arrivo riceverai una bicicletta e una radio Nokia. È tutto ciò che ti serve per iniziare a costruire il tuo impero."],
+                    ["AUTONOMIA VEICOLI", "La benzina è progettata per durare almeno 2 ore di guida continua. Se ignori la riserva per più di 30 minuti senza rifornire, riceverai un avviso di possibile warn per scarso realismo."],
+                    ["STABILITÀ DATI", "Ogni tua azione è registrata in un database JSON persistente. I tuoi progressi sono al sicuro anche dopo i riavvii del sistema."],
+                    ["COMUNICAZIONE", "Il microfono è obbligatorio. Senza voce, non c'è ruolo. La radio Nokia è il tuo strumento principale."],
+                    ["DISPONIBILITÀ", "Siamo operativi 24 ore su 24, 7 giorni su 7, con manutenzioni notturne rapide."],
+                    ["CARRIERA RP", "Puoi scalare i ranghi della Polizia o diventare il re del porto. La scelta è dinamica e dipende solo dalle tue interazioni."],
+                    ["REGOLE D'INGAGGIO", "Ogni conflitto deve essere motivato da una valida ragione Roleplay. Il Deathmatch gratuito non è tollerato."],
+                    ["ASSISTENZA", "Il nostro staff è disponibile tramite ticket Discord per risolvere ogni problematica tecnica o di gioco."]
                 ]
             }
         };
 
         function setLanguage(lang) {
-            const l = texts['it']; // Manteniamo IT come principale come richiesto
-            document.getElementById('hero-sub').innerText = l.heroSub;
-            document.getElementById('btn-enter').innerText = l.btnEnt;
-            if(document.getElementById('btn-reg')) document.getElementById('btn-reg').innerText = l.btnReg;
-            document.getElementById('info-title').innerText = l.infoTitle;
-            document.getElementById('info-desc').innerText = l.infoDesc;
-            document.getElementById('shop-title').innerText = l.shopTitle;
-            document.getElementById('faq-title').innerText = l.faqTitle;
+            const l = texts['it'];
             const grid = document.getElementById('faq-grid');
             grid.innerHTML = '';
             l.faqs.forEach(f => { grid.innerHTML += `<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`; });
@@ -247,17 +245,18 @@
         function showPath(path) {
             const content = document.getElementById('path-content');
             if(path === 'illegal') {
-                content.innerHTML = "<h3>LA STRADA DEL CRIMINE</h3><p>Trova <strong>Deshawn</strong> al porto per iniziare la tua scalata criminale. Dovrai dimostrare il tuo valore per ottenere la sua fiducia e gestire i traffici della città.</p>";
+                const randomQuote = deshawnQuotes[Math.floor(Math.random() * deshawnQuotes.length)];
+                content.innerHTML = `<h3>LA STRADA DEL CRIMINE</h3><p style="margin-top:15px; font-style: italic; color: #ff4d4d;">"${randomQuote}"</p><p style="margin-top:10px; font-size: 0.9rem; color: #555;">Cerca Deshawn nell'area portuale per iniziare.</p>`;
             } else {
-                content.innerHTML = "<h3>LA STRADA DELLA LEGALITÀ</h3><p>Mettiti al servizio dello Stato. Puoi arruolarti in <strong>Polizia</strong>, prestare soccorso in <strong>Ospedale</strong> o gestire l'officina come <strong>Meccanico</strong>.</p>";
+                content.innerHTML = "<h3>LE ISTITUZIONI</h3><p>Scegli di servire la città. Entra nei ranghi della <strong>Polizia</strong>, salva vite in <strong>Ospedale</strong> o mantieni i motori accesi come <strong>Meccanico</strong>.</p>";
             }
             content.style.animation = "none";
-            setTimeout(() => { content.style.animation = "pop 0.5s ease"; }, 10);
+            setTimeout(() => { content.style.animation = "pop 0.6s ease forwards"; }, 10);
         }
 
         function toggleMenu() {
             const menu = document.getElementById('side-menu');
-            menu.style.width = (menu.style.width === '300px') ? '0' : '300px';
+            menu.style.width = (menu.style.width === '350px') ? '0' : '350px';
         }
 
         function openReg() { document.getElementById('reg-modal').style.display = 'block'; }
