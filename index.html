@@ -10,14 +10,14 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: #0b0b0d; color: white; font-family: 'Montserrat', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* SFONDO PERSONALIZZATO */
+        /* SFONDO CON EFFETTO PARALLASSE E OVERLAY DINAMICO */
         .hero { 
             height: 100vh; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
             text-align: center; 
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('sfondo.webp'); 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(11,11,13,1)), url('sfondo.webp'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed; 
@@ -26,71 +26,98 @@
 
         /* Overlay Lingua */
         .overlay { position: fixed; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 2000; display: flex; align-items: center; justify-content: center; transition: 0.5s; }
-        .overlay-content { text-align: center; background: rgba(255,255,255,0.05); padding: 50px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
-        .lang-buttons button { margin: 10px; padding: 15px 30px; cursor: pointer; border: 1px solid white; border-radius: 5px; background: transparent; color: white; font-weight: bold; transition: 0.3s; }
-        .lang-buttons button:hover { background: white; color: black; }
+        .overlay-content { text-align: center; background: rgba(255,255,255,0.05); padding: 50px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(20px); box-shadow: 0 0 50px rgba(0,0,0,0.5); }
+        .lang-buttons button { margin: 10px; padding: 15px 30px; cursor: pointer; border: 1px solid white; border-radius: 5px; background: transparent; color: white; font-weight: bold; transition: 0.3s; text-transform: uppercase; }
+        .lang-buttons button:hover { background: white; color: black; box-shadow: 0 0 20px white; }
+
+        /* MODALE REGOLAMENTO */
+        .modal { display: none; position: fixed; z-index: 3000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); }
+        .modal-content { background: #111; margin: 5% auto; padding: 40px; border: 1px solid #333; width: 80%; max-width: 800px; border-radius: 20px; max-height: 80vh; overflow-y: auto; position: relative; }
+        .close-modal { position: absolute; right: 20px; top: 10px; font-size: 40px; cursor: pointer; color: #555; }
+        .modal-content h2 { color: #5865F2; margin-bottom: 20px; font-weight: 900; }
+        .modal-content p { margin-bottom: 15px; line-height: 1.6; color: #ccc; border-left: 3px solid #5865F2; padding-left: 15px; }
 
         /* Navbar & Loghi */
-        .navbar { position: fixed; top: 0; width: 100%; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); }
-        .nav-logo-circle { width: 60px; height: 60px; border-radius: 50%; border: 2px solid white; object-fit: cover; background: #222; }
+        .navbar { position: fixed; top: 0; width: 100%; padding: 25px 50px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); }
+        .nav-logo-circle { width: 65px; height: 65px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.5); object-fit: cover; box-shadow: 0 0 15px rgba(255,255,255,0.1); }
         
         /* Menu Toggle */
-        .menu-toggle { cursor: pointer; display: flex; flex-direction: column; gap: 6px; }
-        .bar { width: 30px; height: 3px; background: white; transition: 0.4s; }
+        .menu-toggle { cursor: pointer; display: flex; flex-direction: column; gap: 6px; padding: 10px; }
+        .bar { width: 35px; height: 3px; background: white; transition: 0.4s; border-radius: 2px; }
 
         /* Side Nav */
-        .side-nav { height: 100%; width: 0; position: fixed; z-index: 1500; top: 0; right: 0; background-color: #000; overflow-x: hidden; transition: 0.5s; padding-top: 100px; text-align: center; border-left: 1px solid #333; }
-        .side-nav a { padding: 15px; text-decoration: none; font-size: 25px; color: #fff; display: block; transition: 0.3s; font-weight: 900; text-transform: uppercase; }
+        .side-nav { height: 100%; width: 0; position: fixed; z-index: 1500; top: 0; right: 0; background-color: #000; overflow-x: hidden; transition: 0.5s; padding-top: 100px; text-align: center; border-left: 1px solid #222; }
+        .side-nav a { padding: 15px; text-decoration: none; font-size: 22px; color: #fff; display: block; transition: 0.3s; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
+        .side-nav a:hover { color: #5865F2; background: rgba(255,255,255,0.05); }
 
         /* Hero Content */
-        .main-logo-gif { width: 280px; margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(255,255,255,0.3)); }
-        h1 { font-size: 3.5rem; font-weight: 900; letter-spacing: 5px; margin-bottom: 10px; }
-        .sub-text { font-size: 1.2rem; color: #bbb; margin-bottom: 30px; text-transform: uppercase; }
+        .main-logo-gif { width: 320px; margin-bottom: 25px; filter: drop-shadow(0 0 20px rgba(88, 101, 242, 0.4)); }
+        h1 { font-size: 4rem; font-weight: 900; letter-spacing: 8px; margin-bottom: 15px; text-shadow: 0 0 30px rgba(255,255,255,0.2); }
+        .sub-text { font-size: 1.1rem; color: #888; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 3px; }
         
         /* Pulsanti Hero */
         .hero-btns { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-        .btn-entra { padding: 15px 35px; border-radius: 50px; border: none; font-weight: bold; cursor: pointer; background: #5865F2; color: white; text-decoration: none; transition: 0.3s; text-transform: uppercase; }
-        .btn-regolamento { padding: 15px 35px; border-radius: 50px; border: 2px solid white; font-weight: bold; cursor: pointer; background: transparent; color: white; text-decoration: none; transition: 0.3s; text-transform: uppercase; }
-        .btn-regolamento:hover { background: white; color: black; }
+        .btn-entra { padding: 18px 45px; border-radius: 50px; border: none; font-weight: bold; cursor: pointer; background: #5865F2; color: white; text-decoration: none; transition: 0.4s; text-transform: uppercase; box-shadow: 0 10px 20px rgba(88, 101, 242, 0.3); }
+        .btn-entra:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(88, 101, 242, 0.5); background: #7289da; }
+        .btn-regolamento { padding: 18px 45px; border-radius: 50px; border: 2px solid white; font-weight: bold; cursor: pointer; background: transparent; color: white; text-decoration: none; transition: 0.4s; text-transform: uppercase; }
+        .btn-regolamento:hover { background: white; color: black; transform: translateY(-5px); }
 
         /* Info & Paths */
-        .info-sec { padding: 100px 20px; text-align: center; background: #050505; }
-        .glass { max-width: 900px; margin: auto; background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); padding: 50px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.05); }
-        .btn-path { padding: 15px 25px; border-radius: 10px; cursor: pointer; font-weight: bold; background: none; transition: 0.3s; margin: 10px; text-transform: uppercase; }
-        .illegal { border: 2px solid #ff4d4d; color: #ff4d4d; }
-        .legal { border: 2px solid #4dff88; color: #4dff88; }
-        .illegal:hover { background: #ff4d4d; color: white; }
-        .legal:hover { background: #4dff88; color: white; }
+        .info-sec { padding: 120px 20px; text-align: center; background: #0b0b0d; }
+        .glass { max-width: 1000px; margin: auto; background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); padding: 60px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+        .btn-path { padding: 18px 35px; border-radius: 15px; cursor: pointer; font-weight: bold; background: rgba(255,255,255,0.03); transition: 0.3s; margin: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .illegal { border: 1px solid rgba(255, 77, 77, 0.3); color: #ff4d4d; }
+        .legal { border: 1px solid rgba(77, 255, 136, 0.3); color: #4dff88; }
+        .illegal:hover { background: #ff4d4d; color: white; box-shadow: 0 0 20px rgba(255, 77, 77, 0.4); border-color: #ff4d4d; }
+        .legal:hover { background: #4dff88; color: white; box-shadow: 0 0 20px rgba(77, 255, 136, 0.4); border-color: #4dff88; }
 
         /* Sezione Sviluppatori & Sistema */
-        .dev-tag { margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: center; gap: 40px; }
-        .dev-item h4 { font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 5px; }
-        .dev-item p { font-weight: 900; font-size: 1.1rem; }
+        .dev-tag { margin-top: 50px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; }
+        .dev-item h4 { font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 8px; opacity: 0.6; }
+        .dev-item p { font-weight: 900; font-size: 1.3rem; letter-spacing: 1px; }
 
         /* Shop Section */
-        .shop-sec { padding: 80px 20px; text-align: center; background: #0b0b0d; }
-        .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; max-width: 1000px; margin: 40px auto; }
-        .shop-card { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; border: 1px solid #333; transition: 0.3s; }
-        .shop-card:hover { transform: translateY(-10px); border-color: #5865F2; }
-        .price { font-size: 2rem; font-weight: 900; color: #5865F2; margin: 10px 0; }
+        .shop-sec { padding: 100px 20px; text-align: center; background: #050505; }
+        .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1100px; margin: 50px auto; }
+        .shop-card { background: linear-gradient(145deg, #111, #080808); padding: 45px; border-radius: 30px; border: 1px solid #222; transition: 0.5s; position: relative; overflow: hidden; }
+        .shop-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: #5865F2; opacity: 0; transition: 0.5s; }
+        .shop-card:hover { transform: translateY(-15px); border-color: #5865F2; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .shop-card:hover::before { opacity: 1; }
+        .price { font-size: 2.5rem; font-weight: 900; color: #5865F2; margin: 20px 0; display: block; }
 
         /* FAQ */
-        .faq-sec { padding: 80px 20px; max-width: 1000px; margin: auto; background: #050505; }
-        details { background: #16161a; padding: 20px; border-radius: 10px; margin-bottom: 10px; cursor: pointer; text-align: left; border: 1px solid #222; }
-        summary { font-weight: bold; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-        summary::after { content: '▼'; font-size: 0.8rem; color: #555; }
+        .faq-sec { padding: 100px 20px; max-width: 900px; margin: auto; }
+        details { background: rgba(255,255,255,0.02); padding: 25px; border-radius: 15px; margin-bottom: 15px; cursor: pointer; text-align: left; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        details:hover { background: rgba(255,255,255,0.05); }
+        summary { font-weight: bold; list-style: none; display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem; }
+        summary::after { content: '+'; color: #5865F2; font-size: 1.5rem; }
+        details[open] summary::after { content: '-'; }
+        details p { margin-top: 15px; color: #aaa; line-height: 1.6; }
         
-        footer { padding: 40px; text-align: center; color: #444; font-size: 0.8rem; background: #050505; border-top: 1px solid #111; }
+        footer { padding: 60px; text-align: center; color: #333; font-size: 0.9rem; background: #000; border-top: 1px solid #111; letter-spacing: 2px; }
 
-        @keyframes pop { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-        .animate-pop { animation: pop 1s ease-out; }
+        @keyframes pop { 0% { transform: scale(0.9); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        .animate-pop { animation: pop 1s cubic-bezier(0.17, 0.67, 0.83, 0.67); }
     </style>
 </head>
 <body>
 
+    <div id="reg-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeReg()">&times;</span>
+            <h2>REGOLAMENTO DEFINITIVE RP</h2>
+            <p><strong>1. Rispetto Comunitario:</strong> È vietato ogni tipo di insulto OOC. Il rispetto verso lo staff e gli altri player è alla base della nostra efficienza.</p>
+            <p><strong>2. Fair Play:</strong> Ogni azione deve permettere una via d'uscita o un'interazione equa per tutte le parti coinvolte.</p>
+            <p><strong>3. Powergaming & Metagaming:</strong> È severamente vietato compiere azioni impossibili nella realtà o utilizzare informazioni ottenute fuori dal gioco.</p>
+            <p><strong>4. Gestione Veicoli:</strong> La guida deve essere realistica. I danni gravi al veicolo devono essere interpretati tramite RP.</p>
+            <p><strong>5. Zone Sicure:</strong> Ospedali e stazioni di Polizia sono considerate zone protette dove non è possibile compiere atti criminali diretti.</p>
+            <p><strong>6. Warning:</strong> Il mancato rispetto del regolamento o delle tempistiche di rifornimento (riserva 30min) comporterà l'assegnazione di un Warn.</p>
+        </div>
+    </div>
+
     <div id="language-overlay" class="overlay">
         <div class="overlay-content">
-            <h2>SELECT LANGUAGE</h2>
+            <h2 style="letter-spacing: 5px; margin-bottom: 30px;">SELECT LANGUAGE</h2>
             <div class="lang-buttons">
                 <button onclick="setLanguage('it')">ITALIANO 🇮🇹</button>
                 <button onclick="setLanguage('en')">ENGLISH 🇬🇧</button>
@@ -107,10 +134,10 @@
     </nav>
 
     <div id="side-menu" class="side-nav">
-        <a href="javascript:void(0)" onclick="toggleMenu()" style="font-size: 40px; text-align: right; padding-right: 30px;">&times;</a>
+        <a href="javascript:void(0)" onclick="toggleMenu()" style="font-size: 40px; text-align: right; padding-right: 30px; color: #555;">&times;</a>
         <a href="#info-section" onclick="toggleMenu()">Percorsi</a>
         <a href="#shop-section" onclick="toggleMenu()">Shop</a>
-        <a href="https://discord.gg/85Dj5UurDH" target="_blank" onclick="toggleMenu()">Regolamento</a>
+        <a href="javascript:void(0)" onclick="openReg(); toggleMenu();">Regolamento</a>
         <a href="#faq-section" onclick="toggleMenu()">FAQ</a>
         <a href="https://discord.gg/85Dj5UurDH" target="_blank">Discord</a>
     </div>
@@ -122,22 +149,22 @@
             <p id="hero-sub" class="sub-text">L'unica realtà dove il tuo domani dipende solo da te. GTA V PS4.</p>
             <div class="hero-btns">
                 <a href="https://discord.gg/85Dj5UurDH" id="btn-enter" target="_blank" class="btn-entra">ENTRA DA NOI</a>
-                <a href="https://discord.gg/85Dj5UurDH" id="btn-reg" target="_blank" class="btn-regolamento">REGOLAMENTO</a>
+                <a href="javascript:void(0)" onclick="openReg()" id="btn-reg" class="btn-regolamento">REGOLAMENTO</a>
             </div>
         </div>
     </section>
 
     <section id="info-section" class="info-sec">
         <div class="glass">
-            <h2 id="info-title">SCEGLI LA TUA STRADA</h2>
-            <p id="info-desc" style="margin-bottom: 30px; color: #aaa;">Il destino di Los Santos è nelle tue mani.</p>
+            <h2 id="info-title" style="font-size: 2.5rem; font-weight: 900; margin-bottom: 10px;">SCEGLI LA TUA STRADA</h2>
+            <p id="info-desc" style="margin-bottom: 40px; color: #666; letter-spacing: 2px;">IL DESTINO DI LOS SANTOS È NELLE TUE MANI.</p>
             
-            <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
+            <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
                 <button class="btn-path illegal" onclick="showPath('illegal')">ILLEGALITÀ</button>
                 <button class="btn-path legal" onclick="showPath('legal')">LEGALITÀ</button>
             </div>
-            <div id="path-content" style="margin-top:30px; min-height: 120px; color: #ddd; line-height: 1.6;">
-                <p>Seleziona un percorso per visualizzare i dettagli.</p>
+            <div id="path-content" style="margin-top:40px; min-height: 120px; color: #bbb; line-height: 1.8; font-size: 1.1rem;">
+                <p>Seleziona un percorso per visualizzare i dettagli del tuo futuro.</p>
             </div>
 
             <div class="dev-tag">
@@ -154,20 +181,32 @@
     </section>
 
     <section id="shop-section" class="shop-sec">
-        <h2 id="shop-title">SERVER SHOP</h2>
+        <h2 id="shop-title" style="font-size: 2.5rem; font-weight: 900; letter-spacing: 5px;">SERVER SHOP</h2>
         <div class="shop-grid">
-            <div class="shop-card"><h3>STARTER PACK</h3><div class="price">5€</div><p>Boost economico iniziale</p></div>
-            <div class="shop-card"><h3>MEDIUM PACK</h3><div class="price">10€</div><p>Veicolo custom + Cash</p></div>
-            <div class="shop-card"><h3>FACTION PACK</h3><div class="price">20€</div><p>Creazione fazione dedicata</p></div>
+            <div class="shop-card">
+                <h3>STARTER PACK</h3>
+                <span class="price">5€</span>
+                <p style="color:#777">Boost economico iniziale per iniziare la tua scalata sociale con stile.</p>
+            </div>
+            <div class="shop-card">
+                <h3>MEDIUM PACK</h3>
+                <span class="price">10€</span>
+                <p style="color:#777">Veicolo custom esclusivo e una somma di Cash per dominare le strade.</p>
+            </div>
+            <div class="shop-card">
+                <h3>FACTION PACK</h3>
+                <span class="price">20€</span>
+                <p style="color:#777">Creazione fazione dedicata con slot riservati e gestione quartier generale.</p>
+            </div>
         </div>
     </section>
 
     <section id="faq-section" class="faq-sec">
-        <h2 id="faq-title" style="text-align: center; margin-bottom: 40px; letter-spacing: 2px;">DOMANDE FREQUENTI</h2>
+        <h2 id="faq-title" style="text-align: center; margin-bottom: 50px; font-weight: 900; letter-spacing: 3px;">FAQ - DOMANDE FREQUENTI</h2>
         <div id="faq-grid"></div>
     </section>
 
-    <footer>&copy; 2026 Definitive Roleplay | Efficiency & Design.</footer>
+    <footer>&copy; 2026 DEFINITIVE ROLEPLAY | EFFICIENCY & DESIGN.</footer>
 
     <script>
         const texts = {
@@ -176,35 +215,22 @@
                 btnEnt: "ENTRA DA NOI",
                 btnReg: "REGOLAMENTO",
                 infoTitle: "SCEGLI LA TUA STRADA",
-                infoDesc: "Il destino di Los Santos è nelle tue mani. Chi diventerai?",
+                infoDesc: "IL DESTINO DI LOS SANTOS È NELLE TUE MANI.",
                 shopTitle: "SERVER SHOP",
                 faqTitle: "FAQ - DOMANDE FREQUENTI",
                 faqs: [
-                    ["Cosa ricevo all'ingresso?", "Ogni nuovo cittadino riceve una bicicletta e una radio Nokia per comunicare."],
-                    ["Quanto dura la benzina?", "Un pieno dura almeno 2 ore. Se dopo 30 minuti in modalità riserva il veicolo non viene spento o rifornito, deve essere inviato un messaggio di avviso che menziona un possibile warn."],
-                    ["Le sessioni vengono salvate?", "Sì, utilizziamo un database JSON persistente che mantiene i tuoi dati anche dopo il riavvio del bot."],
-                    ["Come funzionano i depositi?", "Ogni deposito è protetto da un PIN unico impostato dal bot per garantire la massima sicurezza."]
-                ]
-            },
-            en: {
-                heroSub: "The only reality where your tomorrow depends only on you. GTA V PS4.",
-                btnEnt: "JOIN US",
-                btnReg: "RULES",
-                infoTitle: "CHOOSE YOUR PATH",
-                infoDesc: "The fate of Los Santos is in your hands. Who will you become?",
-                shopTitle: "SERVER SHOP",
-                faqTitle: "FAQ - QUESTIONS",
-                faqs: [
-                    ["What do I get at start?", "Every new citizen receives a bicycle and a Nokia radio."],
-                    ["Fuel duration?", "Min 2 hours. 30 min reserve before a Warn is issued."],
-                    ["Is my data saved?", "Yes, we use a persistent JSON database to keep your sessions safe."],
-                    ["How do storages work?", "Each storage has a unique PIN set by the bot for security."]
+                    ["Cosa ricevo all'ingresso?", "Ogni nuovo cittadino riceve una bicicletta e una radio Nokia per comunicare subito."],
+                    ["Come funziona la benzina?", "Un pieno dura almeno 2 ore. Se dopo 30 minuti in modalità riserva il veicolo non viene spento o rifornito, riceverai un avviso di possibile warn."],
+                    ["I progressi vengono salvati?", "Sì, il sistema utilizza un database dedicato che rende ogni sessione persistente anche dopo i riavvii."],
+                    ["È obbligatorio il microfono?", "Sì, per un'esperienza Roleplay di qualità il microfono è fondamentale per interagire."],
+                    ["Quali sono gli orari del server?", "Il server è attivo 24/7, con riavvii programmati per mantenere l'efficienza massima."],
+                    ["Posso cambiare lavoro?", "Certamente, potrai scegliere di cambiare fazione o passare all'illegalità seguendo le dinamiche RP."]
                 ]
             }
         };
 
         function setLanguage(lang) {
-            const l = texts[lang] || texts['it'];
+            const l = texts['it']; // Manteniamo IT come principale come richiesto
             document.getElementById('hero-sub').innerText = l.heroSub;
             document.getElementById('btn-enter').innerText = l.btnEnt;
             if(document.getElementById('btn-reg')) document.getElementById('btn-reg').innerText = l.btnReg;
@@ -221,16 +247,25 @@
         function showPath(path) {
             const content = document.getElementById('path-content');
             if(path === 'illegal') {
-                content.innerHTML = "<h3>LA STRADA DEL CRIMINE</h3><p>Contatta <strong>Deshawn</strong> al porto per iniziare a gestire i tuoi traffici. Ascolta bene le sue indicazioni: <em>le sue frasi possono variare</em> in base alla situazione.</p>";
+                content.innerHTML = "<h3>LA STRADA DEL CRIMINE</h3><p>Trova <strong>Deshawn</strong> al porto per iniziare la tua scalata criminale. Dovrai dimostrare il tuo valore per ottenere la sua fiducia e gestire i traffici della città.</p>";
             } else {
-                content.innerHTML = "<h3>LA STRADA DELLA LEGALITÀ</h3><p>Mettiti al servizio della comunità come Poliziotto, Medico o Meccanico.</p>";
+                content.innerHTML = "<h3>LA STRADA DELLA LEGALITÀ</h3><p>Mettiti al servizio dello Stato. Puoi arruolarti in <strong>Polizia</strong>, prestare soccorso in <strong>Ospedale</strong> o gestire l'officina come <strong>Meccanico</strong>.</p>";
             }
-            content.style.animation = "pop 0.5s ease";
+            content.style.animation = "none";
+            setTimeout(() => { content.style.animation = "pop 0.5s ease"; }, 10);
         }
 
         function toggleMenu() {
             const menu = document.getElementById('side-menu');
             menu.style.width = (menu.style.width === '300px') ? '0' : '300px';
+        }
+
+        function openReg() { document.getElementById('reg-modal').style.display = 'block'; }
+        function closeReg() { document.getElementById('reg-modal').style.display = 'none'; }
+        
+        window.onclick = function(event) {
+            let modal = document.getElementById('reg-modal');
+            if (event.target == modal) closeReg();
         }
     </script>
 </body>
