@@ -46,7 +46,12 @@
         .main-logo-gif { width: 280px; margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(255,255,255,0.3)); }
         h1 { font-size: 3.5rem; font-weight: 900; letter-spacing: 5px; margin-bottom: 10px; }
         .sub-text { font-size: 1.2rem; color: #bbb; margin-bottom: 30px; text-transform: uppercase; }
+        
+        /* Pulsanti Hero */
+        .hero-btns { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
         .btn-entra { padding: 15px 35px; border-radius: 50px; border: none; font-weight: bold; cursor: pointer; background: #5865F2; color: white; text-decoration: none; transition: 0.3s; text-transform: uppercase; }
+        .btn-regolamento { padding: 15px 35px; border-radius: 50px; border: 2px solid white; font-weight: bold; cursor: pointer; background: transparent; color: white; text-decoration: none; transition: 0.3s; text-transform: uppercase; }
+        .btn-regolamento:hover { background: white; color: black; }
 
         /* Info & Paths */
         .info-sec { padding: 100px 20px; text-align: center; background: #050505; }
@@ -105,8 +110,8 @@
         <a href="javascript:void(0)" onclick="toggleMenu()" style="font-size: 40px; text-align: right; padding-right: 30px;">&times;</a>
         <a href="#info-section" onclick="toggleMenu()">Percorsi</a>
         <a href="#shop-section" onclick="toggleMenu()">Shop</a>
-        <a href="#faq-section" onclick="toggleMenu()">FAQ</a>
         <a href="https://discord.gg/85Dj5UurDH" target="_blank" onclick="toggleMenu()">Regolamento</a>
+        <a href="#faq-section" onclick="toggleMenu()">FAQ</a>
         <a href="https://discord.gg/85Dj5UurDH" target="_blank">Discord</a>
     </div>
 
@@ -115,7 +120,10 @@
             <img src="LOGO.GIF" class="main-logo-gif animate-pop" alt="Definitive RP Animated Logo">
             <h1 class="animate-pop">DEFINITIVE ROLEPLAY</h1>
             <p id="hero-sub" class="sub-text">L'unica realtà dove il tuo domani dipende solo da te. GTA V PS4.</p>
-            <a href="https://discord.gg/85Dj5UurDH" id="btn-enter" target="_blank" class="btn-entra">ENTRA DA NOI</a>
+            <div class="hero-btns">
+                <a href="https://discord.gg/85Dj5UurDH" id="btn-enter" target="_blank" class="btn-entra">ENTRA DA NOI</a>
+                <a href="https://discord.gg/85Dj5UurDH" id="btn-reg" target="_blank" class="btn-regolamento">REGOLAMENTO</a>
+            </div>
         </div>
     </section>
 
@@ -166,13 +174,14 @@
             it: {
                 heroSub: "L'unica realtà dove il tuo domani dipende solo da te. GTA V PS4.",
                 btnEnt: "ENTRA DA NOI",
+                btnReg: "REGOLAMENTO",
                 infoTitle: "SCEGLI LA TUA STRADA",
                 infoDesc: "Il destino di Los Santos è nelle tue mani. Chi diventerai?",
                 shopTitle: "SERVER SHOP",
                 faqTitle: "FAQ - DOMANDE FREQUENTI",
                 faqs: [
                     ["Cosa ricevo all'ingresso?", "Ogni nuovo cittadino riceve una bicicletta e una radio Nokia per comunicare."],
-                    ["Quanto dura la benzina?", "Un pieno dura almeno 2 ore. Se entri in riserva hai 30 minuti per rifornire prima che venga inviato un Warn."],
+                    ["Quanto dura la benzina?", "Un pieno dura almeno 2 ore. Se dopo 30 minuti in modalità riserva il veicolo non viene spento o rifornito, deve essere inviato un messaggio di avviso che menziona un possibile warn."],
                     ["Le sessioni vengono salvate?", "Sì, utilizziamo un database JSON persistente che mantiene i tuoi dati anche dopo il riavvio del bot."],
                     ["Come funzionano i depositi?", "Ogni deposito è protetto da un PIN unico impostato dal bot per garantire la massima sicurezza."]
                 ]
@@ -180,6 +189,7 @@
             en: {
                 heroSub: "The only reality where your tomorrow depends only on you. GTA V PS4.",
                 btnEnt: "JOIN US",
+                btnReg: "RULES",
                 infoTitle: "CHOOSE YOUR PATH",
                 infoDesc: "The fate of Los Santos is in your hands. Who will you become?",
                 shopTitle: "SERVER SHOP",
@@ -197,6 +207,7 @@
             const l = texts[lang] || texts['it'];
             document.getElementById('hero-sub').innerText = l.heroSub;
             document.getElementById('btn-enter').innerText = l.btnEnt;
+            if(document.getElementById('btn-reg')) document.getElementById('btn-reg').innerText = l.btnReg;
             document.getElementById('info-title').innerText = l.infoTitle;
             document.getElementById('info-desc').innerText = l.infoDesc;
             document.getElementById('shop-title').innerText = l.shopTitle;
