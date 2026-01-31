@@ -8,91 +8,84 @@
     <style>
         /* --- CORE STYLE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background: #050505; 
-            color: white; 
-            font-family: 'Montserrat', sans-serif; 
-            overflow-x: hidden; 
-            scroll-behavior: smooth; 
-        }
+        body { background: #0b0b0d; color: white; font-family: 'Montserrat', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* SFONDO GENERATO VIA CSS */
-        .bg-fixed {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at center, #111122 0%, #050505 100%);
+        /* SFONDO PERSONALIZZATO */
+        .hero { 
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('sfondo.webp'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; 
+            padding: 20px; 
         }
-        .stars {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                radial-gradient(1px 1px at 25% 35%, #fff, transparent),
-                radial-gradient(1px 1px at 50% 50%, #fff, transparent),
-                radial-gradient(1.5px 1.5px at 75% 65%, #fff, transparent);
-            background-size: 300px 300px;
-            animation: stars-move 120s linear infinite;
-            opacity: 0.3;
-        }
-        @keyframes stars-move { from { transform: translateY(0); } to { transform: translateY(-1000px); } }
 
         /* Overlay Lingua */
-        .overlay { position: fixed; width: 100%; height: 100%; background: #000; z-index: 2000; display: flex; align-items: center; justify-content: center; }
-        .overlay-content { text-align: center; background: rgba(255,255,255,0.03); padding: 50px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(20px); }
-        .lang-buttons button { margin: 10px; padding: 15px 30px; cursor: pointer; border: 1px solid white; border-radius: 8px; background: transparent; color: white; font-weight: bold; transition: 0.3s; text-transform: uppercase; }
+        .overlay { position: fixed; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 2000; display: flex; align-items: center; justify-content: center; transition: 0.5s; }
+        .overlay-content { text-align: center; background: rgba(255,255,255,0.05); padding: 50px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+        .lang-buttons button { margin: 10px; padding: 15px 30px; cursor: pointer; border: 1px solid white; border-radius: 5px; background: transparent; color: white; font-weight: bold; transition: 0.3s; }
         .lang-buttons button:hover { background: white; color: black; }
 
-        /* Navbar */
-        .navbar { position: fixed; top: 0; width: 100%; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; }
-        .nav-logo-circle { width: 60px; height: 60px; border-radius: 50%; border: 2px solid #5865F2; background: #222; overflow: hidden; }
+        /* Navbar & Loghi */
+        .navbar { position: fixed; top: 0; width: 100%; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); }
+        .nav-logo-circle { width: 60px; height: 60px; border-radius: 50%; border: 2px solid white; object-fit: cover; background: #222; }
+        
+        /* Menu Toggle */
         .menu-toggle { cursor: pointer; display: flex; flex-direction: column; gap: 6px; }
-        .bar { width: 30px; height: 3px; background: white; border-radius: 5px; }
+        .bar { width: 30px; height: 3px; background: white; transition: 0.4s; }
 
         /* Side Nav */
-        .side-nav { height: 100%; width: 0; position: fixed; z-index: 1500; top: 0; right: 0; background-color: rgba(0,0,0,0.95); overflow-x: hidden; transition: 0.5s; padding-top: 100px; text-align: center; backdrop-filter: blur(10px); }
+        .side-nav { height: 100%; width: 0; position: fixed; z-index: 1500; top: 0; right: 0; background-color: #000; overflow-x: hidden; transition: 0.5s; padding-top: 100px; text-align: center; border-left: 1px solid #333; }
         .side-nav a { padding: 15px; text-decoration: none; font-size: 25px; color: #fff; display: block; transition: 0.3s; font-weight: 900; text-transform: uppercase; }
-        .side-nav a:hover { color: #5865F2; }
 
-        /* Hero */
-        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; }
-        .main-logo-gif { width: 260px; margin-bottom: 20px; filter: drop-shadow(0 0 20px rgba(88, 101, 242, 0.3)); }
+        /* Hero Content */
+        .main-logo-gif { width: 280px; margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(255,255,255,0.3)); }
         h1 { font-size: 3.5rem; font-weight: 900; letter-spacing: 5px; margin-bottom: 10px; }
-        .sub-text { font-size: 1.1rem; color: #bbb; margin-bottom: 35px; text-transform: uppercase; letter-spacing: 2px; }
-        .btn-entra { padding: 18px 45px; border-radius: 50px; border: none; font-weight: bold; cursor: pointer; background: #5865F2; color: white; text-decoration: none; display: inline-block; transition: 0.4s; text-transform: uppercase; letter-spacing: 1px; }
-        .btn-entra:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(88, 101, 242, 0.4); }
+        .sub-text { font-size: 1.2rem; color: #bbb; margin-bottom: 30px; text-transform: uppercase; }
+        .btn-entra { padding: 15px 35px; border-radius: 50px; border: none; font-weight: bold; cursor: pointer; background: #5865F2; color: white; text-decoration: none; transition: 0.3s; text-transform: uppercase; }
 
-        /* Info Section */
-        .info-sec { padding: 80px 20px; text-align: center; }
-        .glass-card { max-width: 950px; margin: auto; background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.05); padding: 50px 30px; border-radius: 40px; }
-        .dev-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 30px; }
-        .dev-box { padding: 25px; background: rgba(0,0,0,0.4); border-radius: 20px; border-left: 5px solid #f1c40f; text-align: left; min-width: 250px; }
-        .dev-box h3 { font-size: 0.75rem; color: #f1c40f; text-transform: uppercase; margin-bottom: 8px; }
-        .dev-box p { font-size: 1.1rem; font-weight: bold; }
+        /* Info & Paths */
+        .info-sec { padding: 100px 20px; text-align: center; background: #050505; }
+        .glass { max-width: 900px; margin: auto; background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); padding: 50px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.05); }
+        .btn-path { padding: 15px 25px; border-radius: 10px; cursor: pointer; font-weight: bold; background: none; transition: 0.3s; margin: 10px; text-transform: uppercase; }
+        .illegal { border: 2px solid #ff4d4d; color: #ff4d4d; }
+        .legal { border: 2px solid #4dff88; color: #4dff88; }
+        .illegal:hover { background: #ff4d4d; color: white; }
+        .legal:hover { background: #4dff88; color: white; }
+
+        /* Sezione Sviluppatori & Sistema */
+        .dev-tag { margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: center; gap: 40px; }
+        .dev-item h4 { font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 5px; }
+        .dev-item p { font-weight: 900; font-size: 1.1rem; }
+
+        /* Shop Section */
+        .shop-sec { padding: 80px 20px; text-align: center; background: #0b0b0d; }
+        .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; max-width: 1000px; margin: 40px auto; }
+        .shop-card { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; border: 1px solid #333; transition: 0.3s; }
+        .shop-card:hover { transform: translateY(-10px); border-color: #5865F2; }
+        .price { font-size: 2rem; font-weight: 900; color: #5865F2; margin: 10px 0; }
 
         /* FAQ */
-        .faq-sec { padding: 80px 20px; max-width: 1100px; margin: auto; }
-        .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-top: 40px; }
-        details { background: rgba(255,255,255,0.03); padding: 22px; border-radius: 15px; border: 1px solid #222; cursor: pointer; transition: 0.3s; }
-        details:hover { border-color: #444; }
-        summary { font-weight: bold; display: flex; justify-content: space-between; outline: none; }
-        details p { margin-top: 15px; color: #aaa; line-height: 1.6; border-top: 1px solid #222; padding-top: 10px; }
+        .faq-sec { padding: 80px 20px; max-width: 1000px; margin: auto; background: #050505; }
+        details { background: #16161a; padding: 20px; border-radius: 10px; margin-bottom: 10px; cursor: pointer; text-align: left; border: 1px solid #222; }
+        summary { font-weight: bold; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        summary::after { content: '▼'; font-size: 0.8rem; color: #555; }
+        
+        footer { padding: 40px; text-align: center; color: #444; font-size: 0.8rem; background: #050505; border-top: 1px solid #111; }
 
-        /* Footer */
-        footer { padding: 50px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); color: #555; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            .navbar { padding: 20px; }
-        }
+        @keyframes pop { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        .animate-pop { animation: pop 1s ease-out; }
     </style>
 </head>
 <body>
 
-    <div class="bg-fixed"><div class="stars"></div></div>
-
     <div id="language-overlay" class="overlay">
         <div class="overlay-content">
-            <h2>SELECT LANGUAGE / SCEGLI LINGUA</h2>
+            <h2>SELECT LANGUAGE</h2>
             <div class="lang-buttons">
                 <button onclick="setLanguage('it')">ITALIANO 🇮🇹</button>
                 <button onclick="setLanguage('en')">ENGLISH 🇬🇧</button>
@@ -102,9 +95,7 @@
     </div>
 
     <nav class="navbar">
-        <div class="nav-logo-circle">
-            <img src="logo.JPG" alt="" style="width:100%; height:100%; object-fit:cover;">
-        </div>
+        <img src="logo.JPG" class="nav-logo-circle" alt="Definitive RP Logo">
         <div class="menu-toggle" onclick="toggleMenu()">
             <div class="bar"></div><div class="bar"></div><div class="bar"></div>
         </div>
@@ -112,126 +103,118 @@
 
     <div id="side-menu" class="side-nav">
         <a href="javascript:void(0)" onclick="toggleMenu()" style="font-size: 40px; text-align: right; padding-right: 30px;">&times;</a>
-        <a href="#info-section" id="nav-info" onclick="toggleMenu()">Informazioni</a>
-        <a href="#faq-section" id="nav-faq" onclick="toggleMenu()">FAQ</a>
+        <a href="#info-section" onclick="toggleMenu()">Percorsi</a>
+        <a href="#shop-section" onclick="toggleMenu()">Shop</a>
+        <a href="#faq-section" onclick="toggleMenu()">FAQ</a>
+        <a href="https://discord.gg/85Dj5UurDH" target="_blank" onclick="toggleMenu()">Regolamento</a>
         <a href="https://discord.gg/85Dj5UurDH" target="_blank">Discord</a>
     </div>
 
     <section class="hero">
         <div class="hero-container">
-            <img src="LOGO.GIF" class="main-logo-gif" alt="Logo">
-            <h1>DEFINITIVE ROLEPLAY</h1>
-            <p id="hero-sub" class="sub-text">L'unica realtà dove il tuo domani dipende solo da te.</p>
+            <img src="LOGO.GIF" class="main-logo-gif animate-pop" alt="Definitive RP Animated Logo">
+            <h1 class="animate-pop">DEFINITIVE ROLEPLAY</h1>
+            <p id="hero-sub" class="sub-text">L'unica realtà dove il tuo domani dipende solo da te. GTA V PS4.</p>
             <a href="https://discord.gg/85Dj5UurDH" id="btn-enter" target="_blank" class="btn-entra">ENTRA DA NOI</a>
         </div>
     </section>
 
     <section id="info-section" class="info-sec">
-        <div class="glass-card">
-            <h2 id="info-title">SISTEMA E SVILUPPO</h2>
-            <div class="dev-container">
-                <div class="dev-box">
-                    <h3 id="txt-dev-title">Developers</h3>
+        <div class="glass">
+            <h2 id="info-title">SCEGLI LA TUA STRADA</h2>
+            <p id="info-desc" style="margin-bottom: 30px; color: #aaa;">Il destino di Los Santos è nelle tue mani.</p>
+            
+            <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
+                <button class="btn-path illegal" onclick="showPath('illegal')">ILLEGALITÀ</button>
+                <button class="btn-path legal" onclick="showPath('legal')">LEGALITÀ</button>
+            </div>
+            <div id="path-content" style="margin-top:30px; min-height: 120px; color: #ddd; line-height: 1.6;">
+                <p>Seleziona un percorso per visualizzare i dettagli.</p>
+            </div>
+
+            <div class="dev-tag">
+                <div class="dev-item">
+                    <h4 style="color:#f1c40f">DEVELOPERS</h4>
                     <p>.vyxe_ & wxrd</p>
                 </div>
-                <div class="dev-box" style="border-left-color: #5865F2;">
-                    <h3 id="txt-bot-title">Core Bot</h3>
+                <div class="dev-item">
+                    <h4 style="color:#5865F2">SYSTEM BOT</h4>
                     <p>lwx.bot</p>
                 </div>
             </div>
-            <p id="info-desc" style="margin-top: 30px; color: #888;">Progettato per l'efficienza e l'esperienza utente su PS4.</p>
+        </div>
+    </section>
+
+    <section id="shop-section" class="shop-sec">
+        <h2 id="shop-title">SERVER SHOP</h2>
+        <div class="shop-grid">
+            <div class="shop-card"><h3>STARTER PACK</h3><div class="price">5€</div><p>Boost economico iniziale</p></div>
+            <div class="shop-card"><h3>MEDIUM PACK</h3><div class="price">10€</div><p>Veicolo custom + Cash</p></div>
+            <div class="shop-card"><h3>FACTION PACK</h3><div class="price">20€</div><p>Creazione fazione dedicata</p></div>
         </div>
     </section>
 
     <section id="faq-section" class="faq-sec">
-        <h2 id="faq-title" style="text-align: center; font-size: 2rem; letter-spacing: 2px;">FAQ</h2>
-        <div id="faq-grid" class="faq-grid"></div>
+        <h2 id="faq-title" style="text-align: center; margin-bottom: 40px; letter-spacing: 2px;">DOMANDE FREQUENTI</h2>
+        <div id="faq-grid"></div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Definitive Roleplay - All Rights Reserved</p>
-    </footer>
+    <footer>&copy; 2026 Definitive Roleplay | Efficiency & Design.</footer>
 
     <script>
         const texts = {
             it: {
-                navInfo: "Informazioni", navFaq: "FAQ",
                 heroSub: "L'unica realtà dove il tuo domani dipende solo da te. GTA V PS4.",
-                btnEnt: "ENTRA NEL SERVER",
-                infoTitle: "SISTEMA E SVILUPPO",
-                txtDevTitle: "Sviluppatori", txtBotTitle: "Bot di Sistema",
-                infoDesc: "Progettato per l'efficienza e l'esperienza utente su PS4.",
+                btnEnt: "ENTRA DA NOI",
+                infoTitle: "SCEGLI LA TUA STRADA",
+                infoDesc: "Il destino di Los Santos è nelle tue mani. Chi diventerai?",
+                shopTitle: "SERVER SHOP",
                 faqTitle: "FAQ - DOMANDE FREQUENTI",
                 faqs: [
-                    ["Come inizio?", "Entra nel Discord, leggi il regolamento e ricevi la radio Nokia e la bici."],
-                    ["Durata benzina?", "Minimo 2 ore. In riserva hai 30 minuti prima dello spegnimento."],
-                    ["Cosa succede in riserva?", "Se ignori la riserva per 30 minuti, riceverai un messaggio di Warn."],
-                    ["Dati salvati?", "Sì, usiamo un database JSON per rendere tutto persistente."],
-                    ["Kit iniziale?", "Ogni cittadino parte con una bicicletta e una radio Nokia."],
-                    ["Fazioni?", "Crea la tua fazione tramite i pack o scalando i ranghi."],
-                    ["Esiste uno shop?", "Sì, pack disponibili da 5€ a 20€."],
-                    ["Ambientazione?", "USA Roleplay con economia reale."]
+                    ["Cosa ricevo all'ingresso?", "Ogni nuovo cittadino riceve una bicicletta e una radio Nokia per comunicare."],
+                    ["Quanto dura la benzina?", "Un pieno dura almeno 2 ore. Se entri in riserva hai 30 minuti per rifornire prima che venga inviato un Warn."],
+                    ["Le sessioni vengono salvate?", "Sì, utilizziamo un database JSON persistente che mantiene i tuoi dati anche dopo il riavvio del bot."],
+                    ["Come funzionano i depositi?", "Ogni deposito è protetto da un PIN unico impostato dal bot per garantire la massima sicurezza."]
                 ]
             },
             en: {
-                navInfo: "Info", navFaq: "FAQ",
                 heroSub: "The only reality where your tomorrow depends only on you. GTA V PS4.",
-                btnEnt: "JOIN SERVER",
-                infoTitle: "SYSTEM & DEVELOPMENT",
-                txtDevTitle: "Developers", txtBotTitle: "System Bot",
-                infoDesc: "Designed for efficiency and user experience on PS4.",
+                btnEnt: "JOIN US",
+                infoTitle: "CHOOSE YOUR PATH",
+                infoDesc: "The fate of Los Santos is in your hands. Who will you become?",
+                shopTitle: "SERVER SHOP",
                 faqTitle: "FAQ - QUESTIONS",
                 faqs: [
-                    ["How to start?", "Join Discord, read rules and get your Nokia radio and bike."],
-                    ["Fuel time?", "2 hours minimum. 30 min reserve before shutdown."],
-                    ["Reserve warn?", "Ignoring reserve for 30 min results in a Warn message."],
-                    ["Persistent data?", "Yes, we use a JSON database for sessions."],
-                    ["Starting items?", "A bicycle and a Nokia radio."],
-                    ["Factions?", "Create one via packs or ranking up."],
-                    ["Shop?", "Packs from 5€ to 20€ available."],
-                    ["Setting?", "USA Roleplay with real economy."]
-                ]
-            },
-            es: {
-                navInfo: "Info", navFaq: "FAQ",
-                heroSub: "La única realidad donde tu mañana depende solo de ti. GTA V PS4.",
-                btnEnt: "ENTRAR AL SERVIDOR",
-                infoTitle: "SISTEMA Y DESARROLLO",
-                txtDevTitle: "Desarrolladores", txtBotTitle: "Bot de Sistema",
-                infoDesc: "Diseñado para la eficiencia y experiencia de usuario en PS4.",
-                faqTitle: "FAQ - PREGUNTAS",
-                faqs: [
-                    ["¿Cómo empezar?", "Entra en Discord, lee las reglas y recibe tu radio Nokia y bici."],
-                    ["¿Combustible?", "2 horas mínimo. 30 min de reserva."],
-                    ["¿Aviso de reserva?", "Si ignoras la reserva 30 min, recibirás un mensaje de Warn."],
-                    ["¿Datos?", "Sí, base de datos JSON persistente."],
-                    ["¿Kit inicial?", "Una bicicleta y una radio Nokia."],
-                    ["¿Facciones?", "Crea una mediante packs o subiendo de rango."],
-                    ["¿Tienda?", "Packs de 5€ a 20€ disponibles."],
-                    ["¿Ambiente?", "USA Roleplay con economía real."]
+                    ["What do I get at start?", "Every new citizen receives a bicycle and a Nokia radio."],
+                    ["Fuel duration?", "Min 2 hours. 30 min reserve before a Warn is issued."],
+                    ["Is my data saved?", "Yes, we use a persistent JSON database to keep your sessions safe."],
+                    ["How do storages work?", "Each storage has a unique PIN set by the bot for security."]
                 ]
             }
         };
 
         function setLanguage(lang) {
-            const l = texts[lang];
-            document.getElementById('nav-info').innerText = l.navInfo;
-            document.getElementById('nav-faq').innerText = l.navFaq;
+            const l = texts[lang] || texts['it'];
             document.getElementById('hero-sub').innerText = l.heroSub;
             document.getElementById('btn-enter').innerText = l.btnEnt;
             document.getElementById('info-title').innerText = l.infoTitle;
-            document.getElementById('txt-dev-title').innerText = l.txtDevTitle;
-            document.getElementById('txt-bot-title').innerText = l.txtBotTitle;
             document.getElementById('info-desc').innerText = l.infoDesc;
+            document.getElementById('shop-title').innerText = l.shopTitle;
             document.getElementById('faq-title').innerText = l.faqTitle;
-
             const grid = document.getElementById('faq-grid');
             grid.innerHTML = '';
-            l.faqs.forEach(f => {
-                grid.innerHTML += `<details><summary>${f[0]} <span>▼</span></summary><p>${f[1]}</p></details>`;
-            });
-
+            l.faqs.forEach(f => { grid.innerHTML += `<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`; });
             document.getElementById('language-overlay').style.display = 'none';
+        }
+
+        function showPath(path) {
+            const content = document.getElementById('path-content');
+            if(path === 'illegal') {
+                content.innerHTML = "<h3>LA STRADA DEL CRIMINE</h3><p>Contatta <strong>Deshawn</strong> al porto per iniziare a gestire i tuoi traffici. Ascolta bene le sue indicazioni: <em>le sue frasi possono variare</em> in base alla situazione.</p>";
+            } else {
+                content.innerHTML = "<h3>LA STRADA DELLA LEGALITÀ</h3><p>Mettiti al servizio della comunità come Poliziotto, Medico o Meccanico.</p>";
+            }
+            content.style.animation = "pop 0.5s ease";
         }
 
         function toggleMenu() {
