@@ -10,14 +10,13 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: #0b0b0d; color: white; font-family: 'Montserrat', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* SFONDO AMBIENTALE (File Locale) */
+        /* SFONDO LOCALE */
         .hero { 
             height: 100vh; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
             text-align: center; 
-            /* Sostituito URL con file locale sfondo.webp */
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('sfondo.webp'); 
             background-size: cover;
             background-position: center;
@@ -40,7 +39,6 @@
         /* Side Nav */
         .side-nav { height: 100%; width: 0; position: fixed; z-index: 1500; top: 0; right: 0; background-color: #000; overflow-x: hidden; transition: 0.5s; padding-top: 100px; text-align: center; border-left: 1px solid #333; }
         .side-nav a { padding: 15px; text-decoration: none; font-size: 25px; color: #fff; display: block; transition: 0.3s; font-weight: 900; text-transform: uppercase; }
-        .side-nav a:hover { color: #aaa; }
         .side-nav .closebtn { position: absolute; top: 20px; right: 45px; font-size: 60px; }
 
         /* Hero Content */
@@ -51,37 +49,22 @@
         .btn-scopri, .btn-entra { padding: 15px 35px; border-radius: 50px; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; text-decoration: none; display: inline-block; text-transform: uppercase; }
         .btn-scopri { background: white; color: black; }
         .btn-entra { background: #5865F2; color: white; } 
-        .btn-scopri:hover, .btn-entra:hover { transform: scale(1.1); filter: brightness(1.2); }
 
-        /* Info Section (Glassmorphism) */
-        .info-sec { padding: 100px 20px; display: flex; justify-content: center; background: #050505; }
-        .glass { max-width: 900px; background: rgba(20, 20, 20, 0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.05); padding: 50px; border-radius: 30px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .info-sec h2 { font-size: 2.5rem; margin-bottom: 20px; letter-spacing: 2px; }
-        .info-sec p { line-height: 1.8; color: #ccc; margin-bottom: 40px; font-size: 1.1rem; }
+        /* FAQ Section */
+        .faq-sec { padding: 100px 20px; max-width: 900px; margin: auto; }
+        .faq-sec h2 { text-align: center; margin-bottom: 50px; font-size: 2.5rem; }
+        details { background: #16161a; padding: 20px; border-radius: 10px; margin-bottom: 15px; cursor: pointer; border: 1px solid #333; transition: 0.3s; }
+        details:hover { border-color: #555; }
+        summary { font-weight: bold; font-size: 1.1rem; outline: none; }
+        details p { margin-top: 15px; color: #aaa; line-height: 1.6; }
 
-        /* Path Buttons */
-        .path-selector { display: flex; gap: 20px; justify-content: center; margin-bottom: 30px; }
-        .btn-path { padding: 15px 40px; border-radius: 10px; border: 2px solid; font-weight: bold; cursor: pointer; background: transparent; transition: 0.3s; text-transform: uppercase; }
-        .illegal { border-color: #ff4d4d; color: #ff4d4d; }
-        .legal { border-color: #4dff88; color: #4dff88; }
-        .illegal:hover { background: #ff4d4d; color: white; box-shadow: 0 0 20px #ff4d4d; }
-        .legal:hover { background: #4dff88; color: black; box-shadow: 0 0 20px #4dff88; }
-        .path-details { min-height: 150px; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px; }
-
-        /* Video Section */
-        .video-sec { padding: 100px 20px; text-align: center; background: #0b0b0d; }
-        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; padding: 0 50px; }
-        .video-item { background: #16161a; padding: 20px; border-radius: 15px; border: 1px solid #333; }
-        .video-item video { width: 100%; border-radius: 10px; margin-top: 10px; }
-
-        /* Shop Section */
-        .shop-sec { padding: 100px 20px; text-align: center; background: #050505; }
-        .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin-top: 50px; max-width: 1200px; margin-left: auto; margin-right: auto; }
+        /* Altre sezioni mantenute */
+        .info-sec { padding: 100px 20px; background: #050505; text-align: center; }
+        .glass { max-width: 900px; margin: auto; background: rgba(20, 20, 20, 0.7); backdrop-filter: blur(15px); padding: 50px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.05); }
+        .shop-sec { padding: 100px 20px; text-align: center; background: #0b0b0d; }
+        .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin-top: 50px; max-width: 1200px; margin: auto; }
         .shop-card { background: #16161a; padding: 40px 20px; border-radius: 20px; border-bottom: 5px solid white; transition: 0.4s; }
-        .shop-card h3 { font-size: 2rem; margin-bottom: 10px; }
-        .shop-card p { font-size: 1.1rem; color: #aaa; }
-        .shop-card:hover { transform: translateY(-15px); background: #202025; }
-        .special { border-color: #f1c40f; box-shadow: 0 10px 30px rgba(241, 196, 15, 0.1); }
+        .special { border-color: #f1c40f; }
 
         @keyframes pop { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
         .animate-pop { animation: pop 1s ease-out; }
@@ -101,25 +84,23 @@
     </div>
 
     <nav class="navbar">
-        <img src="logo.JPG" class="nav-logo-circle" alt="Logo Statico">
+        <img src="logo.JPG" class="nav-logo-circle" alt="Logo">
         <div class="menu-toggle" onclick="toggleMenu()">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
         </div>
     </nav>
 
     <div id="side-menu" class="side-nav">
         <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">&times;</a>
         <a href="#info-section" id="nav-story" onclick="toggleMenu()">Storia</a>
-        <a href="#comandi" id="nav-cmds" onclick="toggleMenu()">Comandi</a>
         <a href="#shop" id="nav-shop" onclick="toggleMenu()">Shop</a>
+        <a href="#faq" id="nav-faq" onclick="toggleMenu()">FAQ</a>
         <a href="https://discord.gg/85Dj5UurDH" target="_blank">Discord</a>
     </div>
 
     <section class="hero">
         <div class="hero-container">
-            <img src="LOGO.GIF" class="main-logo-gif animate-pop" alt="Logo Animato">
+            <img src="LOGO.GIF" class="main-logo-gif animate-pop" alt="Logo">
             <h1 class="animate-pop">DEFINITIVE ROLEPLAY</h1>
             <p id="hero-sub" class="sub-text">L'unica realtà dove il tuo domani dipende solo da te. GTA V PS4.</p>
             <div class="hero-btns">
@@ -132,19 +113,12 @@
     <section id="info-section" class="info-sec">
         <div class="glass">
             <h2 id="info-title">IL TUO PERSONAGGIO, LE TUE REGOLE</h2>
-            <p id="info-desc">
-                Benvenuto nell'America di Definitive RP. Qui l'immaginazione non ha confini. 
-                Scegli il tuo destino: criminalità o successo onesto. Il potere è nelle tue mani.
-            </p>
-            
-            <div class="path-selector">
-                <button id="path-ill" class="btn-path illegal" onclick="showPath('illegal')">ILLEGALITÀ</button>
-                <button id="path-leg" class="btn-path legal" onclick="showPath('legal')">LEGALITÀ</button>
+            <p id="info-desc">Benvenuto nell'America di Definitive RP. Qui l'immaginazione non ha confini. Scegli il tuo destino: criminalità o successo onesto.</p>
+            <div class="path-selector" style="margin-top:30px; display:flex; gap:20px; justify-content:center;">
+                <button id="path-ill" class="btn-path illegal" onclick="showPath('illegal')" style="padding:15px 30px; border-radius:10px; cursor:pointer; font-weight:bold; background:transparent; color:#ff4d4d; border:2px solid #ff4d4d;">ILLEGALITÀ</button>
+                <button id="path-leg" class="btn-path legal" onclick="showPath('legal')" style="padding:15px 30px; border-radius:10px; cursor:pointer; font-weight:bold; background:transparent; color:#4dff88; border:2px solid #4dff88;">LEGALITÀ</button>
             </div>
-            
-            <div id="path-content" class="path-details">
-                <p id="path-prompt">Clicca su un percorso per vedere i dettagli...</p>
-            </div>
+            <div id="path-content" style="margin-top:20px; min-height:80px; color:#ccc;"></div>
         </div>
     </section>
 
@@ -158,43 +132,90 @@
         </div>
     </section>
 
+    <section id="faq" class="faq-sec">
+        <h2 id="faq-main-title">DOMANDE FREQUENTI (FAQ)</h2>
+        <div id="faq-container"></div>
+    </section>
+
     <script>
         const texts = {
             it: {
-                navStory: "Storia", navCmds: "Comandi", navShop: "Shop",
+                navStory: "Storia", navShop: "Shop", navFaq: "FAQ",
                 heroSub: "L'unica realtà dove il tuo domani dipende solo da te. GTA V PS4.",
                 btnDisc: "SCOPRI DI PIÙ", btnEnt: "ENTRA DA NOI",
                 infoTitle: "IL TUO PERSONAGGIO, LE TUE REGOLE",
-                infoDesc: "Benvenuto nell'America di Definitive RP. Qui l'immaginazione non ha confini. Scegli il tuo destino: criminalità o successo onesto. Il potere è nelle tue mani.",
+                infoDesc: "Benvenuto nell'America di Definitive RP. Qui l'immaginazione non ha confini. Scegli il tuo destino.",
                 pathIll: "ILLEGALITÀ", pathLeg: "LEGALITÀ",
-                pathPrompt: "Clicca su un percorso per vedere i dettagli...",
                 shopTitle: "🛒 Pack Definitive FRP", pack15: "100.000$ + 1 Macchina", pack20: "150.000$ + Fazione",
-                deshawn: "<h3>Deshawn (Ex Militare)</h3><p>'Deshawn non ama i perditempo. Se vuoi gestire il porto, dimostra di che pasta sei fatto. Ogni parola è un contratto.'</p>",
-                legal: "<h3>Lavori Legali</h3><p>Scegli la tua carriera: Carsaroundtheworld, City Garage o Medical Center. Costruisci il tuo impero.</p>"
+                deshawn: "<h3>Deshawn</h3><p>'Ogni deposito ha un PIN. Non dimenticarlo o i tuoi beni saranno miei.'</p>",
+                legal: "<h3>Lavori</h3><p>Meccanico, Polizia o Medico. Scegli il tuo ruolo IDs: 1458608660...</p>",
+                faqTitle: "DOMANDE FREQUENTI",
+                faqs: [
+                    ["Come entro nel server?", "Clicca su 'Entra da noi', unisciti al Discord e segui il regolamento."],
+                    ["Cosa ricevo all'inizio?", "Inizierai con una bicicletta e una radio Nokia."],
+                    ["Come funziona la benzina?", "Il serbatoio dura almeno 2 ore. In riserva hai 30 minuti prima dello spegnimento."],
+                    ["I depositi sono sicuri?", "Sì, ogni deposito ha un PIN segreto impostato dal Bot."],
+                    ["Quali sono i lavori principali?", "Polizia, Meccanico e Ospedale."],
+                    ["È persistente?", "Sì, le sessioni sono salvate nel nostro database JSON."],
+                    ["Ci sono avvisi per la benzina?", "Sì, se non rifornisci in riserva riceverai un messaggio di Warn."],
+                    ["Posso creare una fazione?", "Sì, tramite il pack da 20€ o scalando i ranghi illegal."],
+                    ["Che bot usate?", "Il bot Gemini 3 Flash, il più avanzato in Italia."],
+                    ["Quali sono i Role ID?", "Polizia (1458608660728119387), Meccanico (1458608661105606850), Hospital (1458608660728119394)."],
+                    ["Posso comprare soldi IC?", "Sì, tramite lo shop ufficiale nella sezione Pack."],
+                    ["L'ambientazione?", "Siamo in America, con economia reale."]
+                ]
             },
             en: {
-                navStory: "Story", navCmds: "Commands", navShop: "Shop",
+                navStory: "Story", navShop: "Shop", navFaq: "FAQ",
                 heroSub: "The only reality where your tomorrow depends only on you. GTA V PS4.",
                 btnDisc: "DISCOVER MORE", btnEnt: "JOIN US",
                 infoTitle: "YOUR CHARACTER, YOUR RULES",
-                infoDesc: "Welcome to America's Definitive RP. Here imagination has no boundaries. Choose your fate: crime or honest success. The power is in your hands.",
+                infoDesc: "Welcome to America's Definitive RP. Imagination has no limits.",
                 pathIll: "ILLEGAL", pathLeg: "LEGAL",
-                pathPrompt: "Click on a path to see details...",
-                shopTitle: "🛒 Definitive Pack FRP", pack15: "100,000$ + 1 Car", pack20: "150,000$ + Faction",
-                deshawn: "<h3>Deshawn (Ex Military)</h3><p>'Deshawn doesn't like time-wasters. If you want to run the port, prove what you're made of. Every word is a contract.'</p>",
-                legal: "<h3>Legal Jobs</h3><p>Choose your career: Carsaroundtheworld, City Garage or Medical Center. Build your empire.</p>"
+                shopTitle: "🛒 Definitive Packs", pack15: "100k$ + 1 Car", pack20: "150k$ + Faction",
+                deshawn: "<h3>Deshawn</h3><p>'Every deposit has a PIN. Don't forget it.'</p>",
+                legal: "<h3>Jobs</h3><p>Police, Mechanic or Hospital. Join the legal force.</p>",
+                faqTitle: "FREQUENTLY ASKED QUESTIONS",
+                faqs: [
+                    ["How to join?", "Click 'Join us', enter Discord and follow rules."],
+                    ["Starting gear?", "You start with a bike and a Nokia radio."],
+                    ["Fuel system?", "Tank lasts 2 hours. 30 min reserve before shutdown."],
+                    ["Are storages safe?", "Yes, each deposit has a PIN set by the Bot."],
+                    ["Main jobs?", "Police, Mechanic and Hospital."],
+                    ["Is it persistent?", "Yes, sessions are saved in JSON database."],
+                    ["Fuel alerts?", "Yes, you get a warn message if you run out of fuel."],
+                    ["Can I start a faction?", "Yes, via 20€ pack or illegal ranking."],
+                    ["Which bot?", "Gemini 3 Flash, the best in Italy."],
+                    ["Role IDs?", "Police, Mechanic and Hospital IDs are integrated."],
+                    ["Can I buy IC money?", "Yes, in the shop section."],
+                    ["Setting?", "America, with real economy."]
+                ]
             },
             es: {
-                navStory: "Historia", navCmds: "Comandos", navShop: "Tienda",
+                navStory: "Historia", navShop: "Tienda", navFaq: "FAQ",
                 heroSub: "La única realidad donde tu mañana depende solo de ti. GTA V PS4.",
-                btnDisc: "SABER MÁS", btnEnt: "ÚNETE A NOSOTROS",
+                btnDisc: "SABER MÁS", btnEnt: "ÚNETE",
                 infoTitle: "TU PERSONAJE, TUS REGLAS",
-                infoDesc: "Bienvenido a Definitive RP América. Aquí la imaginación no tiene límites. Elige tu destino: crimen o éxito honesto. El poder está en tus manos.",
+                infoDesc: "Bienvenido a Definitive RP América. Elige tu destino.",
                 pathIll: "ILEGALIDAD", pathLeg: "LEGALIDAD",
-                pathPrompt: "Haz clic en un camino para ver los detalles...",
-                shopTitle: "🛒 Pack Definitive FRP", pack15: "100.000$ + 1 Coche", pack20: "150.000$ + Facción",
-                deshawn: "<h3>Deshawn (Ex Militar)</h3><p>'Deshawn no quiere perder el tiempo. Si quieres manejar el puerto, demuestra de qué estás hecho. Cada palabra es un contrato.'</p>",
-                legal: "<h3>Trabajos Legales</h3><p>Elige tu carrera: Carsaroundtheworld, City Garage o Medical Center. Construye tu imperio.</p>"
+                shopTitle: "🛒 Packs Definitive", pack15: "100k$ + 1 Coche", pack20: "150k$ + Facción",
+                deshawn: "<h3>Deshawn</h3><p>'Cada depósito tiene un PIN. No lo olvides.'</p>",
+                legal: "<h3>Trabajos</h3><p>Policía, Mecánico o Hospital.</p>",
+                faqTitle: "PREGUNTAS FRECUENTES",
+                faqs: [
+                    ["¿Cómo entrar?", "Haz clic en 'Únete', entra en Discord."],
+                    ["¿Equipo inicial?", "Empiezas con una bici y una radio Nokia."],
+                    ["¿Combustible?", "El tanque dura 2h. 30min de reserva."],
+                    ["¿Depósitos seguros?", "Sí, cada uno tiene un PIN del Bot."],
+                    ["¿Trabajos?", "Policía, Mecánico y Hospital."],
+                    ["¿Es persistente?", "Sí, sesiones guardadas en JSON."],
+                    ["¿Alertas?", "Mensaje de Warn si te quedas sin gasolina."],
+                    ["¿Crear facción?", "Sí, con el pack de 20€."],
+                    ["¿Qué bot?", "Gemini 3 Flash, el mejor de Italia."],
+                    ["¿Role IDs?", "IDs de Policía, Mecánico y Hospital configurados."],
+                    ["¿Dinero IC?", "Sí, disponible en la tienda."],
+                    ["¿Ambientación?", "América, economía real."]
+                ]
             }
         };
 
@@ -205,8 +226,8 @@
             const l = texts[lang];
             
             document.getElementById('nav-story').innerText = l.navStory;
-            document.getElementById('nav-cmds').innerText = l.navCmds;
             document.getElementById('nav-shop').innerText = l.navShop;
+            document.getElementById('nav-faq').innerText = l.navFaq;
             document.getElementById('hero-sub').innerText = l.heroSub;
             document.getElementById('btn-discover').innerText = l.btnDisc;
             document.getElementById('btn-enter').innerText = l.btnEnt;
@@ -214,14 +235,18 @@
             document.getElementById('info-desc').innerText = l.infoDesc;
             document.getElementById('path-ill').innerText = l.pathIll;
             document.getElementById('path-leg').innerText = l.pathLeg;
-            document.getElementById('path-prompt').innerText = l.pathPrompt;
             document.getElementById('shop-title').innerText = l.shopTitle;
             document.getElementById('pack-15').innerText = l.pack15;
             document.getElementById('pack-20').innerText = l.pack20;
+            document.getElementById('faq-main-title').innerText = l.faqTitle;
 
-            const overlay = document.getElementById('language-overlay');
-            overlay.style.opacity = '0';
-            setTimeout(() => overlay.style.display = 'none', 500);
+            const faqContainer = document.getElementById('faq-container');
+            faqContainer.innerHTML = '';
+            l.faqs.forEach(f => {
+                faqContainer.innerHTML += `<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`;
+            });
+
+            document.getElementById('language-overlay').style.display = 'none';
         }
 
         function toggleMenu() {
@@ -238,5 +263,7 @@
             content.innerHTML = `<div style="animation: pop 0.5s ease;">${path === 'illegal' ? texts[currentLang].deshawn : texts[currentLang].legal}</div>`;
         }
     </script>
+</body>
+</html>
 </body>
 </html>
