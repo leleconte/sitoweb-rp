@@ -17,11 +17,10 @@
             align-items: center; 
             justify-content: center; 
             text-align: center; 
-            /* Ho inserito un'immagine di GTA V di alta qualità come backup */
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.alphacoders.com/451/451319.jpg'); 
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Effetto che muove lo sfondo più lentamente dello scorrimento */
+            background-attachment: fixed; 
             padding: 20px; 
         }
 
@@ -83,22 +82,15 @@
         .shop-card:hover { transform: translateY(-15px); background: #202025; }
         .special { border-color: #f1c40f; box-shadow: 0 10px 30px rgba(241, 196, 15, 0.1); }
 
-        /* FAQ */
-        .faq-sec { padding: 100px 20px; max-width: 800px; margin: auto; }
-        details { background: #16161a; padding: 20px; border-radius: 10px; margin-bottom: 15px; cursor: pointer; border: 1px solid #333; }
-        summary { font-weight: bold; font-size: 1.2rem; }
-        details p { margin-top: 15px; color: #aaa; }
-
-        /* Animazioni */
-        .animate-pop { animation: pop 1s ease-out; }
         @keyframes pop { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        .animate-pop { animation: pop 1s ease-out; }
     </style>
 </head>
 <body>
 
     <div id="language-overlay" class="overlay">
         <div class="overlay-content">
-            <h2 id="lang-title">SELECT YOUR LANGUAGE</h2>
+            <h2>SELECT LANGUAGE / SCEGLI LINGUA</h2>
             <div class="lang-buttons">
                 <button onclick="setLanguage('it')">ITALIANO 🇮🇹</button>
                 <button onclick="setLanguage('en')">ENGLISH 🇬🇧</button>
@@ -118,9 +110,9 @@
 
     <div id="side-menu" class="side-nav">
         <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">&times;</a>
-        <a href="#info-section" onclick="toggleMenu()">Storia</a>
-        <a href="#comandi" onclick="toggleMenu()">Comandi</a>
-        <a href="#shop" onclick="toggleMenu()">Shop</a>
+        <a href="#info-section" id="nav-story" onclick="toggleMenu()">Storia</a>
+        <a href="#comandi" id="nav-cmds" onclick="toggleMenu()">Comandi</a>
+        <a href="#shop" id="nav-shop" onclick="toggleMenu()">Shop</a>
         <a href="https://discord.gg/85Dj5UurDH" target="_blank">Discord</a>
     </div>
 
@@ -128,95 +120,119 @@
         <div class="hero-container">
             <img src="LOGO.GIF" class="main-logo-gif animate-pop" alt="Logo Animato">
             <h1 class="animate-pop">DEFINITIVE ROLEPLAY</h1>
-            <p class="sub-text">L'unica realtà dove il tuo domani dipende solo da te. GTA V PS4.</p>
+            <p id="hero-sub" class="sub-text">L'unica realtà dove il tuo domani dipende solo da te. GTA V PS4.</p>
             <div class="hero-btns">
-                <button class="btn-scopri" onclick="scrollToSection('info-section')">SCOPRI DI PIÙ</button>
-                <a href="https://discord.gg/85Dj5UurDH" target="_blank" class="btn-entra">ENTRA DA NOI</a>
+                <button id="btn-discover" class="btn-scopri" onclick="scrollToSection('info-section')">SCOPRI DI PIÙ</button>
+                <a href="https://discord.gg/85Dj5UurDH" id="btn-enter" target="_blank" class="btn-entra">ENTRA DA NOI</a>
             </div>
         </div>
     </section>
 
     <section id="info-section" class="info-sec">
         <div class="glass">
-            <h2>IL TUO PERSONAGGIO, LE TUE REGOLE</h2>
-            <p>
+            <h2 id="info-title">IL TUO PERSONAGGIO, LE TUE REGOLE</h2>
+            <p id="info-desc">
                 Benvenuto nell'America di Definitive RP. Qui l'immaginazione non ha confini. 
-                Sei pronto a costruire la tua storia? Puoi tentare di conquistare la città con una vita criminale spietata 
-                o scalare la vetta del successo come imprenditore onesto. Ogni scelta avrà un peso, ogni azione una conseguenza. 
-                Il potere è nelle tue mani. Quale via sceglierai?
+                Scegli il tuo destino: criminalità o successo onesto. Il potere è nelle tue mani.
             </p>
             
             <div class="path-selector">
-                <button class="btn-path illegal" onclick="showPath('illegal')">ILLEGALITÀ</button>
-                <button class="btn-path legal" onclick="showPath('legal')">LEGALITÀ</button>
+                <button id="path-ill" class="btn-path illegal" onclick="showPath('illegal')">ILLEGALITÀ</button>
+                <button id="path-leg" class="btn-path legal" onclick="showPath('legal')">LEGALITÀ</button>
             </div>
             
             <div id="path-content" class="path-details">
-                <p>Clicca su un percorso per vedere i dettagli...</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="comandi" class="video-sec">
-        <h2>Siamo il server con il bot migliore in Italia!</h2>
-        <p>Guarda i tutorial per padroneggiare i comandi principali.</p>
-        <div class="video-grid">
-            <div class="video-item">
-                <p><strong>Tutorial 1: Accensione Motore</strong></p>
-                <video controls src="https://cdn.discordapp.com/attachments/1464509406023782622/1466941755197755574/ScreenRecording_01-31-2026_12-27-21_AM_1.mov"></video>
-            </div>
-            <div class="video-item">
-                <p><strong>Tutorial 2: Gestione Inventario</strong></p>
-                <video controls src="https://cdn.discordapp.com/attachments/1464509406023782622/1466458021923127428/ScreenRecording_01-29-2026_16-39-20_1.mov"></video>
-            </div>
-            <div class="video-item">
-                <p><strong>Tutorial 3: Interazione NPC</strong></p>
-                <video controls src="https://cdn.discordapp.com/attachments/1464509406023782622/1466456583788691639/ScreenRecording_01-29-2026_16-32-22_1.mov"></video>
+                <p id="path-prompt">Clicca su un percorso per vedere i dettagli...</p>
             </div>
         </div>
     </section>
 
     <section id="shop" class="shop-sec">
-        <h2>🛒 Pack Definitive FRP</h2>
+        <h2 id="shop-title">🛒 Pack Definitive FRP</h2>
         <div class="shop-grid">
             <div class="shop-card"><h3>5€</h3><p>25.000$</p></div>
             <div class="shop-card"><h3>10€</h3><p>50.000$</p></div>
-            <div class="shop-card special"><h3>15€</h3><p>100.000$ + 1 Macchina</p></div>
-            <div class="shop-card special"><h3>20€</h3><p>150.000$ + Fazione</p></div>
+            <div class="shop-card special"><h3>15€</h3><p id="pack-15">100.000$ + 1 Macchina</p></div>
+            <div class="shop-card special"><h3>20€</h3><p id="pack-20">150.000$ + Fazione</p></div>
         </div>
     </section>
 
-    <section class="faq-sec">
-        <h2 style="text-align: center; margin-bottom: 40px;">Domande Frequenti</h2>
-        <details>
-            <summary>Come faccio a entrare nel server?</summary>
-            <p>Clicca sul tasto "Entra da noi" per unirti al Discord ufficiale e segui le istruzioni nel canale benvenuto.</p>
-        </details>
-        <details>
-            <summary>Qual è l'ambientazione?</summary>
-            <p>Siamo ambientati completamente in America, con un'economia reale e dinamica.</p>
-        </details>
-        <details>
-            <summary>Cosa succede se rimango senza benzina?</summary>
-            <p>Hai 30 minuti di riserva per rifornire alla 24/7 Station, altrimenti il veicolo si fermerà e riceverai un avviso.</p>
-        </details>
-    </section>
-
     <script>
+        const texts = {
+            it: {
+                navStory: "Storia", navCmds: "Comandi", navShop: "Shop",
+                heroSub: "L'unica realtà dove il tuo domani dipende solo da te. GTA V PS4.",
+                btnDisc: "SCOPRI DI PIÙ", btnEnt: "ENTRA DA NOI",
+                infoTitle: "IL TUO PERSONAGGIO, LE TUE REGOLE",
+                infoDesc: "Benvenuto nell'America di Definitive RP. Qui l'immaginazione non ha confini. Scegli il tuo destino: criminalità o successo onesto. Il potere è nelle tue mani.",
+                pathIll: "ILLEGALITÀ", pathLeg: "LEGALITÀ",
+                pathPrompt: "Clicca su un percorso per vedere i dettagli...",
+                shopTitle: "🛒 Pack Definitive FRP", pack15: "100.000$ + 1 Macchina", pack20: "150.000$ + Fazione",
+                deshawn: "<h3>Deshawn (Ex Militare)</h3><p>'Deshawn non ama i perditempo. Se vuoi gestire il porto, dimostra di che pasta sei fatto. Ogni parola è un contratto.'</p>",
+                legal: "<h3>Lavori Legali</h3><p>Scegli la tua carriera: Carsaroundtheworld, City Garage o Medical Center. Costruisci il tuo impero.</p>"
+            },
+            en: {
+                navStory: "Story", navCmds: "Commands", navShop: "Shop",
+                heroSub: "The only reality where your tomorrow depends only on you. GTA V PS4.",
+                btnDisc: "DISCOVER MORE", btnEnt: "JOIN US",
+                infoTitle: "YOUR CHARACTER, YOUR RULES",
+                infoDesc: "Welcome to America's Definitive RP. Here imagination has no boundaries. Choose your fate: crime or honest success. The power is in your hands.",
+                pathIll: "ILLEGAL", pathLeg: "LEGAL",
+                pathPrompt: "Click on a path to see details...",
+                shopTitle: "🛒 Definitive Pack FRP", pack15: "100,000$ + 1 Car", pack20: "150,000$ + Faction",
+                deshawn: "<h3>Deshawn (Ex Military)</h3><p>'Deshawn doesn't like time-wasters. If you want to run the port, prove what you're made of. Every word is a contract.'</p>",
+                legal: "<h3>Legal Jobs</h3><p>Choose your career: Carsaroundtheworld, City Garage or Medical Center. Build your empire.</p>"
+            },
+            es: {
+                navStory: "Historia", navCmds: "Comandos", navShop: "Tienda",
+                heroSub: "La única realidad donde tu mañana depende solo de ti. GTA V PS4.",
+                btnDisc: "SABER MÁS", btnEnt: "ÚNETE A NOSOTROS",
+                infoTitle: "TU PERSONAJE, TUS REGLAS",
+                infoDesc: "Bienvenido a Definitive RP América. Aquí la imaginación no tiene límites. Elige tu destino: crimen o éxito honesto. El poder está en tus manos.",
+                pathIll: "ILEGALIDAD", pathLeg: "LEGALIDAD",
+                pathPrompt: "Haz clic en un camino para ver los detalles...",
+                shopTitle: "🛒 Pack Definitive FRP", pack15: "100.000$ + 1 Coche", pack20: "150.000$ + Facción",
+                deshawn: "<h3>Deshawn (Ex Militar)</h3><p>'Deshawn no quiere perder el tiempo. Si quieres manejar el puerto, demuestra de qué estás hecho. Cada palabra es un contrato.'</p>",
+                legal: "<h3>Trabajos Legales</h3><p>Elige tu carrera: Carsaroundtheworld, City Garage o Medical Center. Construye tu imperio.</p>"
+            }
+        };
+
+        let currentLang = 'it';
+
         function setLanguage(lang) {
+            currentLang = lang;
+            const l = texts[lang];
+            
+            // Aggiorna testi Nav
+            document.getElementById('nav-story').innerText = l.navStory;
+            document.getElementById('nav-cmds').innerText = l.navCmds;
+            document.getElementById('nav-shop').innerText = l.navShop;
+            
+            // Aggiorna Hero
+            document.getElementById('hero-sub').innerText = l.heroSub;
+            document.getElementById('btn-discover').innerText = l.btnDisc;
+            document.getElementById('btn-enter').innerText = l.btnEnt;
+            
+            // Aggiorna Info
+            document.getElementById('info-title').innerText = l.infoTitle;
+            document.getElementById('info-desc').innerText = l.infoDesc;
+            document.getElementById('path-ill').innerText = l.pathIll;
+            document.getElementById('path-leg').innerText = l.pathLeg;
+            document.getElementById('path-prompt').innerText = l.pathPrompt;
+            
+            // Aggiorna Shop
+            document.getElementById('shop-title').innerText = l.shopTitle;
+            document.getElementById('pack-15').innerText = l.pack15;
+            document.getElementById('pack-20').innerText = l.pack20;
+
             const overlay = document.getElementById('language-overlay');
             overlay.style.opacity = '0';
             setTimeout(() => overlay.style.display = 'none', 500);
-            console.log("Lingua impostata: " + lang);
         }
 
         function toggleMenu() {
             const menu = document.getElementById('side-menu');
-            if (menu.style.width === '300px') {
-                menu.style.width = '0';
-            } else {
-                menu.style.width = '300px';
-            }
+            menu.style.width = (menu.style.width === '300px') ? '0' : '300px';
         }
 
         function scrollToSection(id) {
@@ -225,19 +241,7 @@
 
         function showPath(path) {
             const content = document.getElementById('path-content');
-            if (path === 'illegal') {
-                content.innerHTML = `
-                    <div style="animation: pop 0.5s ease;">
-                        <h3 style="color: #ff4d4d;">Deshawn (Ex Militare Corrotto)</h3>
-                        <p>"Deshawn non ama i perditempo. Se vuoi gestire il porto e i carichi pesanti, dovrai dimostrare di che pasta sei fatto. Ogni deposito è blindato, ogni parola è un contratto."</p>
-                    </div>`;
-            } else {
-                content.innerHTML = `
-                    <div style="animation: pop 0.5s ease;">
-                        <h3 style="color: #4dff88;">Lavori Legali</h3>
-                        <p>Scegli la tua carriera: <strong>Carsaroundtheworld</strong> per il lusso, <strong>City Garage</strong> per la tecnica, o il <strong>Medical Center</strong> per salvare vite. Costruisci il tuo impero onestamente.</p>
-                    </div>`;
-            }
+            content.innerHTML = `<div style="animation: pop 0.5s ease;">${path === 'illegal' ? texts[currentLang].deshawn : texts[currentLang].legal}</div>`;
         }
     </script>
 </body>
