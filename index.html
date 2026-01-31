@@ -57,7 +57,15 @@
         /* --- NAVBAR --- */
         .navbar { position: fixed; top: 0; width: 100%; padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: 0.5s; }
         .navbar.scrolled { padding: 20px 60px; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .nav-logo { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--primary); box-shadow: var(--neon-shadow); }
+        
+        /* FIX LOGO: Aspetto forzato 1:1 per evitare l'effetto ovale */
+        .nav-logo { width: 60px; height: 60px; object-fit: cover; border-radius: 50%; border: 2px solid var(--primary); box-shadow: var(--neon-shadow); flex-shrink: 0; }
+
+        /* MENU LATERALE */
+        .side-menu { position: fixed; right: -350px; top: 0; width: 350px; height: 100vh; background: rgba(5,5,5,0.98); backdrop-filter: blur(20px); z-index: 2000; transition: 0.5s cubic-bezier(0.77,0,0.175,1); padding: 100px 40px; border-left: 1px solid var(--primary); }
+        .side-menu.active { right: 0; }
+        .side-menu a { display: block; color: white; text-decoration: none; font-size: 1.5rem; font-weight: 900; margin-bottom: 30px; letter-spacing: 5px; transition: 0.3s; }
+        .side-menu a:hover { color: var(--primary); padding-left: 15px; }
 
         /* --- HERO --- */
         .hero { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
@@ -130,6 +138,15 @@
     <div id="cursor-follower"></div>
     <div id="bg-video-overlay"></div>
 
+    <div id="side-menu" class="side-menu">
+        <span onclick="toggleMenu()" style="position:absolute; top:40px; right:40px; font-size:40px; cursor:pointer; color:var(--primary);">&times;</span>
+        <a href="#" onclick="toggleMenu()">HOME</a>
+        <a href="#info-section" onclick="toggleMenu()">FAZIONI</a>
+        <a href="#shop-section" onclick="toggleMenu()">SHOP</a>
+        <a href="#faq-section" onclick="toggleMenu()">FAQ</a>
+        <a href="javascript:void(0)" onclick="openReg(); toggleMenu();">REGOLAMENTO</a>
+    </div>
+
     <div id="language-overlay" class="overlay">
         <div class="overlay-content">
             <h2>DEFINITIVE</h2>
@@ -148,7 +165,7 @@
             <div id="reg-body">
                 <div class="rule-card"><h4>RESPECT</h4><p>Nessun insulto OOC. Tratta gli altri come vorresti essere trattato.</p></div>
                 <div class="rule-card"><h4>EFFICIENCY</h4><p>La benzina dura 2h. Dopo 30min di riserva ignorata, scatta il Warn.</p></div>
-                <div class="rule-card"><h4>SECURITY</h4><p>Ogni deposito ha un PIN. Gemini imposterà il tuo per la massima sicurezza.</p></div>
+                <div class="rule-card"><h4>SECURITY</h4><p>Gestione accessi sicura tramite PIN configurati da Gemini.</p></div>
                 <div class="rule-card"><h4>STARTUP</h4><p>Arriverai in città solo con una Radio Nokia e una bicicletta.</p></div>
                 <div class="rule-card"><h4>DATA</h4><p>Sessioni salvate in JSON persistente. Il tuo progresso è eterno.</p></div>
             </div>
@@ -158,8 +175,9 @@
     <nav class="navbar" id="navbar">
         <img src="logo.JPG" class="nav-logo" alt="Logo">
         <div onclick="toggleMenu()" style="cursor:pointer; display:flex; flex-direction:column; gap:8px;">
-            <div style="width:40px; height:2px; background:white;"></div>
-            <div style="width:40px; height:2px; background:var(--primary);"></div>
+            <div style="width:40px; height:3px; background:white;"></div>
+            <div style="width:40px; height:3px; background:var(--primary);"></div>
+            <div style="width:40px; height:3px; background:white;"></div>
         </div>
     </nav>
 
@@ -211,7 +229,7 @@
     </section>
 
     <section id="faq-section" style="max-width: 1000px; margin: auto;">
-        <h2 id="faq-title" style="text-align:center; font-size: 3rem; margin-bottom: 80px; letter-spacing: 10px;">CONOSCENZA</h2>
+        <h2 id="faq-title" style="text-align:center; font-size: 3rem; margin-bottom: 80px; letter-spacing: 10px;">DOMANDE FREQUENTI</h2>
         <div id="faq-grid"></div>
     </section>
 
@@ -239,12 +257,14 @@
                 infoDesc: "SCEGLI UNA FAZIONE",
                 btnCrim: "CRIMINALITÀ",
                 btnIst: "ISTITUZIONI",
-                faqTitle: "CONOSCENZA",
+                faqTitle: "DOMANDE FREQUENTI",
                 faqs: [
-                    ["DOTAZIONE", "Arrivi solo con una Radio Nokia e una bici."],
-                    ["BENZINA", "2h di autonomia. Warn se ignori la riserva."],
-                    ["DATABASE", "Salvataggio persistente JSON."],
-                    ["PIN", "Ogni deposito ha un PIN univoco."]
+                    ["DOTAZIONE INIZIALE", "Inizi la tua avventura con una Radio Nokia e una bicicletta."],
+                    ["GESTIONE CARBURANTE", "Il serbatoio dura minimo 2h. Se ignori la riserva per 30min, riceverai un avviso di Warn."],
+                    ["SICUREZZA DEPOSITI", "Ogni deposito è protetto da un PIN dedicato per garantire la privacy dei tuoi beni."],
+                    ["PERSISTENZA DATI", "Utilizziamo database JSON per garantire che ogni sessione sia salvata e persistente."],
+                    ["COME ENTRARE?", "Clicca sul tasto 'Entra Ora' per unirti al nostro server Discord ufficiale."],
+                    ["SUPPORTO", "Il nostro staff è sempre disponibile tramite il sistema ticket su Discord."]
                 ]
             },
             en: {
@@ -255,12 +275,14 @@
                 infoDesc: "CHOOSE A SIDE",
                 btnCrim: "CRIMINALITY",
                 btnIst: "INSTITUTIONS",
-                faqTitle: "KNOWLEDGE",
+                faqTitle: "FREQUENT QUESTIONS",
                 faqs: [
-                    ["GEAR", "Arrival with Nokia Radio and bike only."],
-                    ["FUEL", "2h autonomy. Warn if reserve is ignored."],
-                    ["DATABASE", "Persistent JSON storage."],
-                    ["PIN", "Every storage has a unique PIN."]
+                    ["INITIAL GEAR", "Start with a Nokia Radio and a bicycle."],
+                    ["FUEL SYSTEM", "Fuel lasts at least 2h. 30min of ignored reserve leads to a Warn."],
+                    ["STORAGE PIN", "Every storage is protected by a unique PIN for your security."],
+                    ["DATA PERSISTENCE", "We use JSON databases to keep your progress safe after restarts."],
+                    ["HOW TO JOIN?", "Click 'Join Now' to enter our official Discord server."],
+                    ["SUPPORT", "Staff is available 24/7 via the ticket system on Discord."]
                 ]
             },
             es: {
@@ -271,12 +293,14 @@
                 infoDesc: "ELIGE UN BANDO",
                 btnCrim: "CRIMINALIDAD",
                 btnIst: "INSTITUCIONES",
-                faqTitle: "CONOCIMIENTO",
+                faqTitle: "PREGUNTAS FRECUENTES",
                 faqs: [
-                    ["EQUIPO", "Llegas con una Radio Nokia y bici solamente."],
-                    ["GASOLINA", "2h de autonomía. Warn si ignoras la reserva."],
-                    ["DATABASE", "Guardado persistente JSON."],
-                    ["PIN", "Cada depósito tiene un PIN único."]
+                    ["EQUIPO INICIAL", "Empiezas con una Radio Nokia y una bicicleta."],
+                    ["SISTEMA DE GASOLINA", "Mínimo 2h de duración. 30min ignorando la reserva resultará en Warn."],
+                    ["SEGURIDAD PIN", "Cada depósito tiene un PIN único para proteger tus pertenencias."],
+                    ["PERSISTENCIA", "Usamos base de datos JSON para que tu progreso sea eterno."],
+                    ["¿CÓMO ENTRAR?", "Haz clic en 'Entrar Ahora' para unirte a nuestro Discord."],
+                    ["SOPORTE", "Nuestro staff está disponible por tickets en Discord."]
                 ]
             }
         };
@@ -313,17 +337,20 @@
             content.style.opacity = '0';
             setTimeout(() => {
                 if(path === 'illegal') {
-                    content.innerHTML = `<h3 style="color:var(--danger); letter-spacing:5px;">STRADE OSCURE</h3><p>Incontra i contatti al porto per scalare la gerarchia criminale.</p>`;
+                    content.innerHTML = `<h3 style="color:var(--danger); letter-spacing:5px;">STRADE OSCURE</h3><p>Controlla i territori e domina il mercato nero.</p>`;
                 } else {
-                    content.innerHTML = `<h3 style="color:var(--success); letter-spacing:5px;">ORDINE PUBBLICO</h3><p>Polizia (ID: 1458608660728119387), Hospital o Meccanici ti aspettano.</p>`;
+                    content.innerHTML = `<h3 style="color:var(--success); letter-spacing:5px;">ORDINE PUBBLICO</h3><p>Unisciti a Polizia, Medici o Meccanici per servire la città.</p>`;
                 }
                 content.style.opacity = '1';
             }, 300);
         }
 
+        function toggleMenu() {
+            document.getElementById('side-menu').classList.toggle('active');
+        }
+
         function openReg() { document.getElementById('reg-modal').style.display = 'block'; }
         function closeReg() { document.getElementById('reg-modal').style.display = 'none'; }
-        function toggleMenu() { alert("Menu laterale accessibile da desktop. Scorri per navigare!"); }
     </script>
 </body>
 </html>
