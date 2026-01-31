@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Definitive RP | GTA V PS4</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS STYLE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0b0b0d; color: white; font-family: 'Montserrat', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+
+        /* Overlay Lingua */
+        .overlay { position: fixed; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 2000; display: flex; align-items: center; justify-content: center; transition: 0.5s; }
+        .overlay-content { text-align: center; background: rgba(255,255,255,0.05); padding: 50px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
+        .lang-buttons button { margin: 10px; padding: 15px 30px; cursor: pointer; border: 1px solid white; border-radius: 5px; background: transparent; color: white; font-weight: bold; transition: 0.3s; }
+        .lang-buttons button:hover { background: white; color: black; }
+
+        /* Navbar */
+        .navbar { position: fixed; top: 0; width: 100%; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); }
+        .nav-logo-circle { width: 60px; height: 60px; border-radius: 50%; border: 2px solid white; object-fit: cover; }
+        .menu-toggle { cursor: pointer; display: flex; flex-direction: column; gap: 6px; }
+        .bar { width: 30px; height: 3px; background: white; transition: 0.4s; }
+
+        /* Side Nav */
+        .side-nav { height: 100%; width: 0; position: fixed; z-index: 1500; top: 0; right: 0; background-color: #111; overflow-x: hidden; transition: 0.5s; padding-top: 100px; text-align: center; }
+        .side-nav a { padding: 15px; text-decoration: none; font-size: 25px; color: #818181; display: block; transition: 0.3s; font-weight: 900; }
+        .side-nav a:hover { color: #f1f1f1; }
+        .side-nav .closebtn { position: absolute; top: 20px; right: 45px; font-size: 60px; }
+
+        /* Hero Section */
+        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle, #1a1a21 0%, #0b0b0d 100%); padding: 20px; }
+        .main-logo-gif { width: 280px; margin-bottom: 20px; }
+        h1 { font-size: 3.5rem; font-weight: 900; letter-spacing: 5px; margin-bottom: 10px; }
+        .sub-text { font-size: 1.2rem; color: #bbb; margin-bottom: 30px; }
+        .hero-btns { display: flex; gap: 20px; justify-content: center; }
+        .btn-scopri, .btn-entra { padding: 15px 35px; border-radius: 50px; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; text-decoration: none; display: inline-block; }
+        .btn-scopri { background: white; color: black; }
+        .btn-entra { background: #5865F2; color: white; } /* Discord Blue */
+        .btn-scopri:hover, .btn-entra:hover { transform: scale(1.1); filter: brightness(1.2); }
+
+        /* Info Section */
+        .info-sec { padding: 100px 20px; display: flex; justify-content: center; background: #0b0b0d; }
+        .glass { max-width: 900px; background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); padding: 50px; border-radius: 30px; text-align: center; }
+        .info-sec h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        .info-sec p { line-height: 1.8; color: #ccc; margin-bottom: 40px; }
+
+        /* Path Buttons */
+        .path-selector { display: flex; gap: 20px; justify-content: center; margin-bottom: 30px; }
+        .btn-path { padding: 15px 40px; border-radius: 10px; border: 2px solid; font-weight: bold; cursor: pointer; background: transparent; transition: 0.3s; }
+        .illegal { border-color: #ff4d4d; color: #ff4d4d; }
+        .legal { border-color: #4dff88; color: #4dff88; }
+        .illegal:hover { background: #ff4d4d; color: white; box-shadow: 0 0 20px #ff4d4d; }
+        .legal:hover { background: #4dff88; color: black; box-shadow: 0 0 20px #4dff88; }
+        .path-details { min-height: 150px; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px; }
+
+        /* Video Section */
+        .video-sec { padding: 100px 20px; text-align: center; background: #0f0f12; }
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; padding: 0 50px; }
+        .video-item { background: #16161a; padding: 20px; border-radius: 15px; }
+        .video-item video { width: 100%; border-radius: 10px; margin-top: 10px; }
+
+        /* Shop Section */
+        .shop-sec { padding: 100px 20px; text-align: center; }
+        .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin-top: 50px; max-width: 1200px; margin-left: auto; margin-right: auto; }
+        .shop-card { background: #16161a; padding: 40px 20px; border-radius: 20px; border-bottom: 5px solid white; transition: 0.4s; }
+        .shop-card h3 { font-size: 2rem; margin-bottom: 10px; }
+        .shop-card p { font-size: 1.1rem; color: #aaa; }
+        .shop-card:hover { transform: translateY(-15px); background: #202025; }
+        .special { border-color: #f1c40f; box-shadow: 0 10px 30px rgba(241, 196, 15, 0.1); }
+
+        /* FAQ */
+        .faq-sec { padding: 100px 20px; max-width: 800px; margin: auto; }
+        details { background: #16161a; padding: 20px; border-radius: 10px; margin-bottom: 15px; cursor: pointer; }
+        summary { font-weight: bold; font-size: 1.2rem; }
+        details p { margin-top: 15px; color: #aaa; }
+
+        /* Animazioni */
+        .animate-pop { animation: pop 1s ease-out; }
+        @keyframes pop { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div id="language-overlay" class="overlay">
+        <div class="overlay-content">
+            <h2 id="lang-title">SELECT YOUR LANGUAGE</h2>
+            <div class="lang-buttons">
+                <button onclick="setLanguage('it')">ITALIANO 🇮🇹</button>
+                <button onclick="setLanguage('en')">ENGLISH 🇬🇧</button>
+                <button onclick="setLanguage('es')">ESPAÑOL 🇪🇸</button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <img src="logo.jpg" class="nav-logo-circle" alt="Definitive Logo">
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </nav>
+
+    <div id="side-menu" class="side-nav">
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">&times;</a>
+        <a href="#info-section" onclick="toggleMenu()">Storia</a>
+        <a href="#comandi" onclick="toggleMenu()">Comandi</a>
+        <a href="#shop" onclick="toggleMenu()">Shop</a>
+        <a href="https://discord.gg/85Dj5UurDH" target="_blank">Discord</a>
+    </div>
+
+    <section class="hero">
+        <div class="hero-container">
+            <img src="logo.gif" class="main-logo-gif animate-pop" alt="Logo Animato">
+            <h1 class="animate-pop">DEFINITIVE ROLEPLAY</h1>
+            <p class="sub-text">L'unica realtà dove il tuo domani dipende solo da te. GTA V PS4.</p>
+            <div class="hero-btns">
+                <button class="btn-scopri" onclick="scrollToSection('info-section')">SCOPRI DI PIÙ</button>
+                <a href="https://discord.gg/85Dj5UurDH" target="_blank" class="btn-entra">ENTRA DA NOI</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="info-section" class="info-sec">
+        <div class="glass">
+            <h2>IL TUO PERSONAGGIO, LE TUE REGOLE</h2>
+            <p>
+                Benvenuto nell'America di Definitive RP. Qui l'immaginazione non ha confini. 
+                Sei pronto a costruire la tua storia? Puoi tentare di conquistare la città con una vita criminale spietata 
+                o scalare la vetta del successo come imprenditore onesto. Ogni scelta avrà un peso, ogni azione una conseguenza. 
+                Il potere è nelle tue mani. Quale via sceglierai?
+            </p>
+            
+            <div class="path-selector">
+                <button class="btn-path illegal" onclick="showPath('illegal')">ILLEGALITÀ</button>
+                <button class="btn-path legal" onclick="showPath('legal')">LEGALITÀ</button>
+            </div>
+            
+            <div id="path-content" class="path-details">
+                <p>Clicca su un percorso per vedere i dettagli...</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="comandi" class="video-sec">
+        <h2>Siamo il server con il bot migliore in Italia!</h2>
+        <p>Guarda i tutorial per padroneggiare i comandi principali.</p>
+        <div class="video-grid">
+            <div class="video-item">
+                <p><strong>Tutorial 1: Accensione Motore</strong></p>
+                <video controls src="https://cdn.discordapp.com/attachments/1464509406023782622/1466941755197755574/ScreenRecording_01-31-2026_12-27-21_AM_1.mov"></video>
+            </div>
+            <div class="video-item">
+                <p><strong>Tutorial 2: Gestione Inventario</strong></p>
+                <video controls src="https://cdn.discordapp.com/attachments/1464509406023782622/1466458021923127428/ScreenRecording_01-29-2026_16-39-20_1.mov"></video>
+            </div>
+            <div class="video-item">
+                <p><strong>Tutorial 3: Interazione NPC</strong></p>
+                <video controls src="https://cdn.discordapp.com/attachments/1464509406023782622/1466456583788691639/ScreenRecording_01-29-2026_16-32-22_1.mov"></video>
+            </div>
+        </div>
+    </section>
+
+    <section id="shop" class="shop-sec">
+        <h2>🛒 Pack Definitive FRP</h2>
+        <div class="shop-grid">
+            <div class="shop-card"><h3>5€</h3><p>25.000$</p></div>
+            <div class="shop-card"><h3>10€</h3><p>50.000$</p></div>
+            <div class="shop-card special"><h3>15€</h3><p>100.000$ + 1 Macchina</p></div>
+            <div class="shop-card special"><h3>20€</h3><p>150.000$ + Fazione</p></div>
+        </div>
+    </section>
+
+    <section class="faq-sec">
+        <h2 style="text-align: center; margin-bottom: 40px;">Domande Frequenti</h2>
+        <details>
+            <summary>Come faccio a entrare nel server?</summary>
+            <p>Clicca sul tasto "Entra da noi" per unirti al Discord ufficiale e segui le istruzioni nel canale benvenuto.</p>
+        </details>
+        <details>
+            <summary>Qual è l'ambientazione?</summary>
+            <p>Siamo ambientati completamente in America, con un'economia reale e dinamica.</p>
+        </details>
+        <details>
+            <summary>Cosa succede se rimango senza benzina?</summary>
+            <p>Hai 30 minuti di riserva per rifornire alla 24/7 Station, altrimenti il veicolo si fermerà e riceverai un avviso.</p>
+        </details>
+    </section>
+
+    <script>
+        function setLanguage(lang) {
+            const overlay = document.getElementById('language-overlay');
+            overlay.style.opacity = '0';
+            setTimeout(() => overlay.style.display = 'none', 500);
+            console.log("Lingua impostata: " + lang);
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('side-menu');
+            if (menu.style.width === '250px') {
+                menu.style.width = '0';
+            } else {
+                menu.style.width = '250px';
+            }
+        }
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showPath(path) {
+            const content = document.getElementById('path-content');
+            if (path === 'illegal') {
+                content.innerHTML = `
+                    <div style="animation: pop 0.5s ease;">
+                        <h3 style="color: #ff4d4d;">Deshawn (Ex Militare Corrotto)</h3>
+                        <p>"Deshawn non ama i perditempo. Se vuoi gestire il porto e i carichi pesanti, dovrai dimostrare di che pasta sei fatto. Ogni deposito è blindato, ogni parola è un contratto."</p>
+                    </div>`;
+            } else {
+                content.innerHTML = `
+                    <div style="animation: pop 0.5s ease;">
+                        <h3 style="color: #4dff88;">Lavori Legali</h3>
+                        <p>Scegli la tua carriera: <strong>Carsaroundtheworld</strong> per il lusso, <strong>City Garage</strong> per la tecnica, o il <strong>Medical Center</strong> per salvare vite. Costruisci il tuo impero onestamente.</p>
+                    </div>`;
+            }
+        }
+    </script>
+</body>
+</html>
