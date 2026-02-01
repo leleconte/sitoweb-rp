@@ -33,9 +33,9 @@
             z-index: -1;
         }
 
-        /* --- OVERLAY LINGUA (BLUR ESTREMO) --- */
+        /* --- OVERLAY LINGUA --- */
         .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 9999; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(40px); transition: 1s; }
-        .overlay-content h2 { font-size: 4rem; letter-spacing: 20px; margin-bottom: 40px; animation: glow 2s infinite alternate; }
+        .overlay-content h2 { font-size: 4rem; letter-spacing: 20px; margin-bottom: 40px; text-align: center; animation: glow 2s infinite alternate; }
         @keyframes glow { from { text-shadow: 0 0 10px #fff; } to { text-shadow: 0 0 30px var(--primary); } }
 
         .lang-btn {
@@ -47,54 +47,48 @@
         /* --- NAVBAR --- */
         .navbar { position: fixed; top: 0; width: 100%; padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: 0.5s; }
         .navbar.scrolled { padding: 20px 60px; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.1); }
-        
         .nav-logo { width: 60px; height: 60px; object-fit: cover; border-radius: 50%; border: 2px solid var(--primary); box-shadow: var(--neon-shadow); flex-shrink: 0; }
 
-        /* MENU LATERALE */
+        /* --- MENU LATERALE --- */
         .side-menu { position: fixed; right: -350px; top: 0; width: 350px; height: 100vh; background: rgba(5,5,5,0.98); backdrop-filter: blur(20px); z-index: 2000; transition: 0.5s cubic-bezier(0.77,0,0.175,1); padding: 100px 40px; border-left: 1px solid var(--primary); }
         .side-menu.active { right: 0; }
         .side-menu a { display: block; color: white; text-decoration: none; font-size: 1.5rem; font-weight: 900; margin-bottom: 30px; letter-spacing: 5px; transition: 0.3s; }
         .side-menu a:hover { color: var(--primary); padding-left: 15px; }
 
         /* --- HERO --- */
-        .hero { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-        .main-logo-gif { width: 380px; filter: drop-shadow(0 0 40px var(--primary)); animation: float 6s ease-in-out infinite; }
+        .hero { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+        .main-logo-gif { width: 380px; max-width: 80%; filter: drop-shadow(0 0 40px var(--primary)); animation: float 6s ease-in-out infinite; }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-30px); } }
 
         h1 { font-size: 8rem; font-weight: 900; letter-spacing: 25px; margin-bottom: 10px; background: linear-gradient(to bottom, #fff, #555); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .sub-text { font-size: 1.2rem; letter-spacing: 12px; color: var(--primary); text-transform: uppercase; font-weight: 700; margin-bottom: 50px; }
 
         .cta-container { display: flex; gap: 30px; }
-        .btn-main { 
-            padding: 25px 60px; font-weight: 900; text-transform: uppercase; letter-spacing: 4px;
-            transition: 0.5s; position: relative; overflow: hidden; text-decoration: none;
-        }
+        .btn-main { padding: 25px 60px; font-weight: 900; text-transform: uppercase; letter-spacing: 4px; transition: 0.5s; position: relative; overflow: hidden; text-decoration: none; text-align: center; }
         .btn-fill { background: var(--primary); color: white; box-shadow: var(--neon-shadow); }
         .btn-outline { border: 2px solid white; color: white; }
         .btn-main:hover { transform: translateY(-10px) scale(1.05); }
-        .btn-outline:hover { background: white; color: black; box-shadow: 0 0 30px white; }
 
-        /* --- SEZIONI GLASSMOPHISM --- */
-        section { padding: 150px 20px; position: relative; }
-        .glass-box {
-            max-width: 1200px; margin: auto; background: var(--glass); border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 30px; padding: 100px 60px; backdrop-filter: blur(20px); box-shadow: 0 50px 100px rgba(0,0,0,0.5);
-            transition: 0.5s;
-        }
-        .glass-box:hover { border-color: var(--primary); transform: translateY(-10px); }
+        /* --- SEZIONI --- */
+        section { padding: 150px 20px; position: relative; max-width: 1400px; margin: auto; }
+        .glass-box { background: var(--glass); border: 1px solid rgba(255,255,255,0.05); border-radius: 30px; padding: 100px 60px; backdrop-filter: blur(20px); box-shadow: 0 50px 100px rgba(0,0,0,0.5); transition: 0.5s; text-align: center; }
+        .glass-box:hover { border-color: var(--primary); }
+
+        /* --- VIDEO GRID (BOT SECTION) --- */
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-top: 50px; }
+        .video-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(88,101,242,0.1); border-radius: 20px; overflow: hidden; transition: 0.4s; }
+        .video-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .video-card video { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-bottom: 1px solid rgba(88,101,242,0.2); }
+        .video-card p { padding: 15px; font-size: 0.8rem; letter-spacing: 2px; color: #888; font-weight: 700; text-transform: uppercase; }
 
         /* --- SHOP CARDS --- */
         .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 80px; }
-        .shop-card {
-            background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px;
-            padding: 60px 40px; transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1); position: relative;
-        }
+        .shop-card { background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 60px 40px; transition: 0.6s; }
         .shop-card:hover { background: rgba(88,101,242,0.1); border-color: var(--primary); transform: scale(1.05); }
-        .shop-card h3 { letter-spacing: 5px; margin-bottom: 20px; }
         .price { font-size: 4rem; font-weight: 900; color: var(--primary); display: block; margin: 20px 0; }
 
         /* --- PATHS & FACTIONS --- */
-        .btn-faction { padding: 25px 50px; border-radius: 50px; font-weight: 900; letter-spacing: 3px; background: transparent; transition: 0.4s; margin: 15px; }
+        .btn-faction { padding: 25px 50px; border-radius: 50px; font-weight: 900; letter-spacing: 3px; background: transparent; transition: 0.4s; margin: 15px; cursor: pointer; }
         .crim { border: 2px solid var(--danger); color: var(--danger); }
         .inst { border: 2px solid var(--success); color: var(--success); }
         .crim:hover { background: var(--danger); color: white; box-shadow: 0 0 40px var(--danger); }
@@ -103,21 +97,26 @@
         /* --- MODALE --- */
         .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 10000; padding: 50px; overflow-y: auto; }
         .modal-inner { max-width: 900px; margin: auto; }
-        .modal-inner h2 { font-size: 3rem; color: var(--primary); margin-bottom: 40px; letter-spacing: 5px; }
-        .rule-card { background: rgba(255,255,255,0.03); padding: 30px; margin-bottom: 20px; border-left: 5px solid var(--primary); }
+        .rule-card { background: rgba(255,255,255,0.03); padding: 30px; margin-bottom: 20px; border-left: 5px solid var(--primary); text-align: left; }
 
         /* --- FAQ --- */
-        details { background: rgba(255,255,255,0.02); margin-bottom: 15px; padding: 30px; border-radius: 15px; transition: 0.3s; }
-        details[open] { background: rgba(88,101,242,0.1); border: 1px solid var(--primary); }
+        details { background: rgba(255,255,255,0.02); margin-bottom: 15px; padding: 30px; border-radius: 15px; text-align: left; }
         summary { font-weight: 900; font-size: 1.2rem; letter-spacing: 3px; list-style: none; display: flex; justify-content: space-between; cursor: pointer; }
 
         footer { padding: 100px; text-align: center; opacity: 0.3; letter-spacing: 10px; text-transform: uppercase; font-weight: 900; }
 
         /* --- MOBILE OPTIMIZATION --- */
         @media (max-width: 768px) {
-            h1 { font-size: 3.5rem; letter-spacing: 10px; }
-            .cta-container { flex-direction: column; }
+            h1 { font-size: 2.8rem; letter-spacing: 8px; margin-top: 20px; }
+            .sub-text { font-size: 0.8rem; letter-spacing: 5px; }
+            .cta-container { flex-direction: column; width: 100%; }
             .navbar { padding: 20px; }
+            .navbar.scrolled { padding: 15px 20px; }
+            .glass-box { padding: 50px 20px; }
+            section { padding: 80px 15px; }
+            .video-grid { grid-template-columns: 1fr; }
+            .overlay-content h2 { font-size: 2rem; letter-spacing: 10px; }
+            .side-menu { width: 100%; right: -100%; }
         }
     </style>
 </head>
@@ -129,6 +128,7 @@
         <span onclick="toggleMenu()" style="position:absolute; top:40px; right:40px; font-size:40px; cursor:pointer; color:var(--primary);">&times;</span>
         <a href="#" onclick="toggleMenu()">HOME</a>
         <a href="#info-section" onclick="toggleMenu()">FAZIONI</a>
+        <a href="#bot-section" onclick="toggleMenu()">BOT</a>
         <a href="#shop-section" onclick="toggleMenu()">SHOP</a>
         <a href="#faq-section" onclick="toggleMenu()">FAQ</a>
         <a href="javascript:void(0)" onclick="openReg(); toggleMenu();">REGOLAMENTO</a>
@@ -148,12 +148,13 @@
     <div id="reg-modal" class="modal">
         <div class="modal-inner">
             <span onclick="closeReg()" style="float:right; font-size:60px; color:var(--primary); cursor:pointer;">&times;</span>
-            <h2>RULES & CONDUCT</h2>
+            <h2 style="font-size: 3rem; color: var(--primary); margin-bottom: 40px; letter-spacing: 5px;">RULES & CONDUCT</h2>
             <div id="reg-body">
                 <div class="rule-card"><h4>RESPECT</h4><p>Nessun insulto OOC. Tratta gli altri come vorresti essere trattato.</p></div>
                 <div class="rule-card"><h4>EFFICIENCY</h4><p>La benzina dura 2h. Dopo 30min di riserva ignorata, scatta il Warn.</p></div>
-                <div class="rule-card"><h4>STARTUP</h4><p>Arriverai in città solo con una Radio Nokia e una bicicletta.</p></div>
-                <div class="rule-card"><h4>DATA</h4><p>Sessioni salvate in JSON persistente. Il tuo progresso è eterno.</p></div>
+                <div class="rule-card"><h4>SECURITY</h4><p>Ogni deposito ha un PIN dedicato settato da Gemini.</p></div>
+                <div class="rule-card"><h4>STARTUP</h4><p>Inizio città: Radio Nokia e Bicicletta.</p></div>
+                <div class="rule-card"><h4>DATA</h4><p>Sessioni in JSON persistente. Il progresso è salvato.</p></div>
             </div>
         </div>
     </div>
@@ -179,14 +180,47 @@
 
     <section id="info-section">
         <div class="glass-box">
-            <h2 id="info-title" style="font-size: 3.5rem; letter-spacing: 15px; margin-bottom: 20px;">IL TUO DESTINO</h2>
+            <h2 id="info-title" style="font-size: 3rem; letter-spacing: 15px; margin-bottom: 20px;">IL TUO DESTINO</h2>
             <p id="info-desc" style="color:var(--primary); letter-spacing: 5px; font-weight: 700; margin-bottom: 60px;">SCEGLI UNA FAZIONE</p>
             <div style="display:flex; justify-content:center; flex-wrap:wrap;">
                 <button class="btn-faction crim" id="btn-crim" onclick="showPath('illegal')">CRIMINALITÀ</button>
                 <button class="btn-faction inst" id="btn-ist" onclick="showPath('legal')">ISTITUZIONI</button>
             </div>
-            <div id="path-content" style="margin-top:60px; font-size: 1.4rem; color: #aaa;">
+            <div id="path-content" style="margin-top:60px; font-size: 1.4rem; color: #aaa; min-height: 50px;">
                 <p id="path-placeholder">Analizza le strade del server...</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="bot-section">
+        <div class="glass-box" style="border-color: var(--primary);">
+            <h2 style="font-size: 3rem; letter-spacing: 15px; margin-bottom: 10px;">BOT TUTORIAL</h2>
+            <p style="color:var(--primary); letter-spacing: 5px; font-weight: 700;">VIDEO GUIDE ALL'USO</p>
+            <div class="video-grid">
+                <div class="video-card">
+                    <video controls preload="metadata" src="ScreenRecording_01-31-2026_12-49-34_AM_1.MOV"></video>
+                    <p>Interazione Base Bot #1</p>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata" src="ScreenRecording_01-31-2026_12-27-21_AM_1.MOV"></video>
+                    <p>Interazione Base Bot #2</p>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata" src="ScreenRecording_01-29-2026_16-39-20_1.MOV"></video>
+                    <p>Configurazione PIN Depositi</p>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata" src="ScreenRecording_01-29-2026_16-32-22_1.MOV"></video>
+                    <p>Gestione Database Sessioni</p>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata" src="SPOILER_ScreenRecording_01-26-2026_9-00-28_PM_1.MOV"></video>
+                    <p>Sistemi Avanzati e Log</p>
+                </div>
+                <div class="video-card">
+                    <video controls preload="metadata" src="ScreenRecording_01-24-2026_07-41-15_1.MOV"></video>
+                    <p>Efficienza Carburante e Warn</p>
+                </div>
             </div>
         </div>
     </section>
@@ -198,17 +232,17 @@
                 <div class="shop-card">
                     <h3>STARTER PACK</h3>
                     <span class="price">5€</span>
-                    <p>25.000$..</p>
+                    <p>Ideale per iniziare con un boost di risorse.</p>
                 </div>
                 <div class="shop-card">
                     <h3>ELITE LUXURY</h3>
                     <span class="price">10€</span>
-                    <p>50.000$.</p>
+                    <p>Veicoli esclusivi e accesso prioritario.</p>
                 </div>
                 <div class="shop-card">
                     <h3>LEGACY CORP</h3>
                     <span class="price">20€</span>
-                    <p>150.000$+Fazione a scelta.</p>
+                    <p>Crea la tua organizzazione con sede privata.</p>
                 </div>
             </div>
         </div>
@@ -233,12 +267,12 @@
                 btnIst: "ISTITUZIONI",
                 faqTitle: "DOMANDE FREQUENTI",
                 faqs: [
-                    ["DOTAZIONE INIZIALE", "Inizi la tua avventura con una Radio Nokia e una bicicletta."],
-                    ["GESTIONE CARBURANTE", "Il serbatoio dura minimo 2h. Se ignori la riserva per 30min, riceverai un avviso di Warn."],
-                    ["SICUREZZA DEPOSITI", "Ogni deposito è protetto da un PIN dedicato per garantire la privacy dei tuoi beni."],
-                    ["PERSISTENZA DATI", "Utilizziamo database JSON per garantire che ogni sessione sia salvata e persistente."],
-                    ["COME ENTRARE?", "Clicca sul tasto 'Entra Ora' per unirti al nostro server Discord ufficiale."],
-                    ["SUPPORTO", "Il nostro staff è sempre disponibile tramite il sistema ticket su Discord."]
+                    ["DOTAZIONE INIZIALE", "Inizi con una Radio Nokia e una bicicletta."],
+                    ["GESTIONE CARBURANTE", "Minimo 2h di autonomia. Warn se ignori la riserva per 30min."],
+                    ["SICUREZZA DEPOSITI", "Ogni deposito è protetto da un PIN dedicato."],
+                    ["PERSISTENZA DATI", "Database JSON per salvare ogni tua sessione."],
+                    ["COME ENTRARE?", "Usa il tasto 'Entra Ora' per il server Discord."],
+                    ["SUPPORTO", "Staff disponibile tramite ticket Discord."]
                 ]
             },
             en: {
@@ -252,11 +286,11 @@
                 faqTitle: "FREQUENT QUESTIONS",
                 faqs: [
                     ["INITIAL GEAR", "Start with a Nokia Radio and a bicycle."],
-                    ["FUEL SYSTEM", "Fuel lasts at least 2h. 30min of ignored reserve leads to a Warn."],
-                    ["STORAGE PIN", "Every storage is protected by a unique PIN for your security."],
-                    ["DATA PERSISTENCE", "We use JSON databases to keep your progress safe after restarts."],
-                    ["HOW TO JOIN?", "Click 'Join Now' to enter our official Discord server."],
-                    ["SUPPORT", "Staff is available 24/7 via the ticket system on Discord."]
+                    ["FUEL SYSTEM", "2h minimum fuel. Warn after 30min on reserve."],
+                    ["STORAGE PIN", "Every storage has its own PIN code."],
+                    ["DATA PERSISTENCE", "JSON database keeps your progress safe."],
+                    ["HOW TO JOIN?", "Click 'Join Now' for the official Discord."],
+                    ["SUPPORT", "Available 24/7 via Discord tickets."]
                 ]
             },
             es: {
@@ -270,11 +304,11 @@
                 faqTitle: "PREGUNTAS FRECUENTES",
                 faqs: [
                     ["EQUIPO INICIAL", "Empiezas con una Radio Nokia y una bicicleta."],
-                    ["SISTEMA DE GASOLINA", "Mínimo 2h de duración. 30min ignorando la reserva resultará en Warn."],
-                    ["SEGURIDAD PIN", "Cada depósito tiene un PIN único para proteger tus pertenencias."],
-                    ["PERSISTENCIA", "Usamos base de datos JSON para que tu progreso sea eterno."],
-                    ["¿CÓMO ENTRAR?", "Haz clic en 'Entrar Ahora' para unirte a nuestro Discord."],
-                    ["SOPORTE", "Nuestro staff está disponible por tickets en Discord."]
+                    ["SISTEMA DE GASOLINA", "Mínimo 2h. Warn tras 30min en reserva."],
+                    ["SEGURIDAD PIN", "Cada depósito tiene un PIN dedicado."],
+                    ["PERSISTENCIA", "Base de datos JSON para guardar todo."],
+                    ["¿CÓMO ENTRAR?", "Clic en 'Entrar Ahora' para Discord."],
+                    ["SOPORTE", "Staff disponible por tickets."]
                 ]
             }
         };
@@ -313,7 +347,7 @@
                 if(path === 'illegal') {
                     content.innerHTML = `<h3 style="color:var(--danger); letter-spacing:5px;">STRADE OSCURE</h3><p>Controlla i territori e domina il mercato nero.</p>`;
                 } else {
-                    content.innerHTML = `<h3 style="color:var(--success); letter-spacing:5px;">ORDINE PUBBLICO</h3><p>Unisciti a Polizia, Medici o Meccanici per servire la città.</p>`;
+                    content.innerHTML = `<h3 style="color:var(--success); letter-spacing:5px;">ORDINE PUBBLICO</h3><p>Unisciti a Polizia, Medici o Meccanici.</p>`;
                 }
                 content.style.opacity = '1';
             }, 300);
